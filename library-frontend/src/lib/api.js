@@ -50,7 +50,7 @@ function convertKeysToCamelCase(obj) {
 async function apiCall(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
     
-    // Add headers to bypass ngrok warning page - more aggressive approach
+    // Add headers to bypass ngrok warning page - comprehensive approach
     const headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -60,6 +60,8 @@ async function apiCall(endpoint, options = {}) {
         'X-Requested-With': 'XMLHttpRequest', // AJAX request
         'Cache-Control': 'no-cache', // No cache
         'Pragma': 'no-cache', // No cache
+        'Referer': 'https://royal-library.vercel.app', // Set referer
+        'Origin': 'https://royal-library.vercel.app', // Set origin
         ...options.headers
     };
 
@@ -95,6 +97,13 @@ async function apiCall(endpoint, options = {}) {
         } else {
             const text = await response.text();
             console.log('API call successful, text result:', text);
+            
+            // If we get HTML, try to extract JSON from the page
+            if (text.includes('<!DOCTYPE html>')) {
+                console.log('Received HTML instead of JSON - ngrok warning page detected');
+                throw new Error('ngrok warning page detected - please visit the API directly first');
+            }
+            
             throw new Error('Expected JSON response but got: ' + text.substring(0, 200));
         }
     } catch (error) {
