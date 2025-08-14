@@ -1,0 +1,13 @@
+[33mcommit 87c27d38873b8846c49c009dfe0a85498cc5aac8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Suleiman <suleiman97kh@gmail.com>
+Date:   Thu Aug 14 16:10:57 2025 +0300
+
+    vercelv5
+
+library-frontend/COMPLETE_ROUTING_FIX.md
+library-frontend/dist/index.html
+library-frontend/src/components/PageNav.jsx
+library-frontend/src/pages/MyAttemptsPage.jsx
+library-frontend/src/pages/QuizPage.jsx
+library-frontend/src/pages/QuizResultsPage.jsx
+library-frontend/src/pages/RegisterPage.jsx
