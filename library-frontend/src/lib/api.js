@@ -56,6 +56,7 @@ async function apiCall(endpoint, options = {}) {
         'Accept': 'application/json',
         'ngrok-skip-browser-warning': 'true', // Skip ngrok warning page
         'ngrok-skip-browser-warning': '1', // Alternative format
+        'bypass-tunnel-reminder': 'true', // Skip LocalTunnel warning page
         'User-Agent': 'RoyalLibrary/1.0', // Custom user agent
         'X-Requested-With': 'XMLHttpRequest', // AJAX request
         'Cache-Control': 'no-cache', // No cache
@@ -104,15 +105,15 @@ async function apiCall(endpoint, options = {}) {
                 console.log(`Attempt ${attempt} - API call successful, text result:`, text);
                 
                 // If we get HTML, it's likely ngrok warning page
-                if (text.includes('<!DOCTYPE html>') || text.includes('ngrok')) {
-                    console.log(`Attempt ${attempt} - ngrok warning page detected`);
+                if (text.includes('<!DOCTYPE html>') || text.includes('ngrok') || text.includes('localtunnel')) {
+                    console.log(`Attempt ${attempt} - tunnel warning page detected`);
                     
                     if (attempt < maxRetries) {
                         console.log(`Waiting 2 seconds before retry ${attempt + 1}...`);
                         await new Promise(resolve => setTimeout(resolve, 2000));
                         continue;
                     } else {
-                        throw new Error('ngrok warning page detected after all retries - please visit the API directly first');
+                        throw new Error('tunnel warning page detected after all retries - please visit the API directly first');
                     }
                 }
                 
