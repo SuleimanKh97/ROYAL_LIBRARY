@@ -46,7 +46,7 @@ function convertKeysToCamelCase(obj) {
     return camelCaseObj;
 }
 
-// Enhanced API call function with ngrok bypass headers
+// Enhanced API call function with ngrok bypass headers and retry mechanism
 async function apiCall(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
     
@@ -80,36 +80,56 @@ async function apiCall(endpoint, options = {}) {
     console.log('Making API call to:', url);
     console.log('Options:', config);
 
-    try {
-        const response = await fetch(url, config);
-        console.log('Response status:', response.status);
-        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+    // Retry mechanism for ngrok warning pages
+    const maxRetries = 3;
+    let lastError;
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        try {
+            const response = await fetch(url, config);
+            console.log(`Attempt ${attempt} - Response status:`, response.status);
+            console.log(`Attempt ${attempt} - Response headers:`, Object.fromEntries(response.headers.entries()));
 
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-            const data = await response.json();
-            console.log('API call successful, JSON result:', data);
-            return convertKeysToCamelCase(data);
-        } else {
-            const text = await response.text();
-            console.log('API call successful, text result:', text);
-            
-            // If we get HTML, try to extract JSON from the page
-            if (text.includes('<!DOCTYPE html>')) {
-                console.log('Received HTML instead of JSON - ngrok warning page detected');
-                throw new Error('ngrok warning page detected - please visit the API directly first');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
+
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.includes('application/json')) {
+                const data = await response.json();
+                console.log(`Attempt ${attempt} - API call successful, JSON result:`, data);
+                return convertKeysToCamelCase(data);
+            } else {
+                const text = await response.text();
+                console.log(`Attempt ${attempt} - API call successful, text result:`, text);
+                
+                // If we get HTML, it's likely ngrok warning page
+                if (text.includes('<!DOCTYPE html>') || text.includes('ngrok')) {
+                    console.log(`Attempt ${attempt} - ngrok warning page detected`);
+                    
+                    if (attempt < maxRetries) {
+                        console.log(`Waiting 2 seconds before retry ${attempt + 1}...`);
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        continue;
+                    } else {
+                        throw new Error('ngrok warning page detected after all retries - please visit the API directly first');
+                    }
+                }
+                
+                throw new Error('Expected JSON response but got: ' + text.substring(0, 200));
+            }
+        } catch (error) {
+            console.log(`Attempt ${attempt} - API call error:`, error);
+            lastError = error;
             
-            throw new Error('Expected JSON response but got: ' + text.substring(0, 200));
+            if (attempt < maxRetries) {
+                console.log(`Waiting 2 seconds before retry ${attempt + 1}...`);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+            }
         }
-    } catch (error) {
-        console.log('API call error:', error);
-        throw error;
     }
+
+    throw lastError;
 }
 
 class ApiService {
