@@ -481,6 +481,12 @@ function BookCard({ book, onWhatsAppInquiry }) {
     return 'https://via.placeholder.com/300x400/f0f0f0/666?text=كتاب'
   }
 
+  const handleImageError = (event) => {
+    console.log('Image failed to load:', event.target.src);
+    // Set fallback image
+    event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2YwZjBmMCIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjY2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Zhtin2YbYqDwvdGV4dD4KPC9zdmc+';
+  }
+
   const getBookTitle = () => {
     return book.titleArabic || book.title || 'عنوان غير محدد'
   }
@@ -516,9 +522,7 @@ function BookCard({ book, onWhatsAppInquiry }) {
             src={getBookImage()}
             alt={getBookTitle()}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.src = 'https://via.placeholder.com/300x400/f0f0f0/666?text=كتاب'
-            }}
+            onError={handleImageError}
           />
         </div>
 

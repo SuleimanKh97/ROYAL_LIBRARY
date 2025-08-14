@@ -12,7 +12,20 @@ function fixImageUrl(imageUrl) {
     // Replace localhost:5035 with LocalTunnel URL
     if (imageUrl.includes('localhost:5035')) {
         const tunnelUrl = API_BASE_URL.replace('/api', '');
-        return imageUrl.replace('http://localhost:5035', tunnelUrl);
+        const fixedUrl = imageUrl.replace('http://localhost:5035', tunnelUrl);
+        console.log('🔧 Fixed image URL:', { original: imageUrl, fixed: fixedUrl });
+        return fixedUrl;
+    }
+    
+    // If it's already a LocalTunnel URL but wrong subdomain, try to fix it
+    if (imageUrl.includes('loca.lt') && !imageUrl.includes(API_BASE_URL.replace('/api', ''))) {
+        const tunnelUrl = API_BASE_URL.replace('/api', '');
+        const path = imageUrl.split('/uploads/')[1];
+        if (path) {
+            const fixedUrl = `${tunnelUrl}/uploads/${path}`;
+            console.log('🔧 Fixed LocalTunnel image URL:', { original: imageUrl, fixed: fixedUrl });
+            return fixedUrl;
+        }
     }
     
     return imageUrl;
