@@ -31,6 +31,7 @@ function deepCamelize(value) {
   return value;
 }
 
+
 function convertKeysToCamelCase(obj) {
     if (obj === null || typeof obj !== 'object') return obj;
     if (Array.isArray(obj)) return obj.map(convertKeysToCamelCase);
@@ -49,18 +50,24 @@ function convertKeysToCamelCase(obj) {
 async function apiCall(endpoint, options = {}) {
     const url = `${API_BASE_URL}${endpoint}`;
     
-    // Add headers to bypass ngrok warning page
+    // Add headers to bypass ngrok warning page - more aggressive approach
     const headers = {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'ngrok-skip-browser-warning': 'true', // Skip ngrok warning page
+        'ngrok-skip-browser-warning': '1', // Alternative format
         'User-Agent': 'RoyalLibrary/1.0', // Custom user agent
+        'X-Requested-With': 'XMLHttpRequest', // AJAX request
+        'Cache-Control': 'no-cache', // No cache
+        'Pragma': 'no-cache', // No cache
         ...options.headers
     };
 
     const config = {
         method: options.method || 'GET',
         headers,
+        mode: 'cors', // Explicit CORS mode
+        credentials: 'omit', // Don't send cookies
         ...options
     };
 
