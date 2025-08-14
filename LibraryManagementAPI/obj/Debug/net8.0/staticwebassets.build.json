@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JMKKuKq5aS0WLgIoNQbdWwJvhKk4q5RqBBaCiZr300c=",
+  "Hash": "YuzCDhXMPczpCnAUaEDqsGPopxv1vNls5f1/KjRO+Oc=",
   "Source": "LibraryManagementAPI",
   "BasePath": "_content/LibraryManagementAPI",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "LibraryManagementAPI\\wwwroot",
       "Source": "LibraryManagementAPI",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\041157e8-288b-4838-b2ba-f5fd4a74815b_photo_2025-07-24_21-05-46.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\041157e8-288b-4838-b2ba-f5fd4a74815b_photo_2025-07-24_21-05-46.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/041157e8-288b-4838-b2ba-f5fd4a74815b_photo_2025-07-24_21-05-46.jpg",
       "AssetKind": "All",
@@ -36,10 +36,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\041157e8-288b-4838-b2ba-f5fd4a74815b_photo_2025-07-24_21-05-46.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\0dbedd79-6d7f-48e6-bb83-f9e3b6707ccf_photo_2025-07-24_21-05-46.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\0dbedd79-6d7f-48e6-bb83-f9e3b6707ccf_photo_2025-07-24_21-05-46.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/0dbedd79-6d7f-48e6-bb83-f9e3b6707ccf_photo_2025-07-24_21-05-46.jpg",
       "AssetKind": "All",
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\0dbedd79-6d7f-48e6-bb83-f9e3b6707ccf_photo_2025-07-24_21-05-46.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\146aa3d3-b0d0-4a53-9c48-0cf7b7c66dd2_photo_2025-07-24_21-05-46.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\146aa3d3-b0d0-4a53-9c48-0cf7b7c66dd2_photo_2025-07-24_21-05-46.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/146aa3d3-b0d0-4a53-9c48-0cf7b7c66dd2_photo_2025-07-24_21-05-46.jpg",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\146aa3d3-b0d0-4a53-9c48-0cf7b7c66dd2_photo_2025-07-24_21-05-46.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\1f675e61-1ac5-4a0e-aa28-2ba4d8517736_photo_2025-07-24_21-05-46.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\1f675e61-1ac5-4a0e-aa28-2ba4d8517736_photo_2025-07-24_21-05-46.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/1f675e61-1ac5-4a0e-aa28-2ba4d8517736_photo_2025-07-24_21-05-46.jpg",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\1f675e61-1ac5-4a0e-aa28-2ba4d8517736_photo_2025-07-24_21-05-46.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\61316100-c6d4-47e4-b281-3ba2ea953cc8_photo_2025-07-24_21-04-01.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\61316100-c6d4-47e4-b281-3ba2ea953cc8_photo_2025-07-24_21-04-01.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/61316100-c6d4-47e4-b281-3ba2ea953cc8_photo_2025-07-24_21-04-01.jpg",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\61316100-c6d4-47e4-b281-3ba2ea953cc8_photo_2025-07-24_21-04-01.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\a86ef28b-bc11-4776-b680-3a4b3815091a_Screenshot 2025-07-24 123332.png",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\a86ef28b-bc11-4776-b680-3a4b3815091a_Screenshot 2025-07-24 123332.png",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/a86ef28b-bc11-4776-b680-3a4b3815091a_Screenshot 2025-07-24 123332.png",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\a86ef28b-bc11-4776-b680-3a4b3815091a_Screenshot 2025-07-24 123332.png"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\d211c80d-3209-4c7d-9a29-286b205d477d_photo_2025-07-24_21-05-46.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\d211c80d-3209-4c7d-9a29-286b205d477d_photo_2025-07-24_21-05-46.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/d211c80d-3209-4c7d-9a29-286b205d477d_photo_2025-07-24_21-05-46.jpg",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\d211c80d-3209-4c7d-9a29-286b205d477d_photo_2025-07-24_21-05-46.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\uploads\\books\\fc64b3dc-cd11-4eed-8445-1c49369ed4a8_photo_2025-07-24_21-05-46.jpg",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\uploads\\books\\fc64b3dc-cd11-4eed-8445-1c49369ed4a8_photo_2025-07-24_21-05-46.jpg",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "uploads/books/fc64b3dc-cd11-4eed-8445-1c49369ed4a8_photo_2025-07-24_21-05-46.jpg",
       "AssetKind": "All",
@@ -169,10 +169,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\books\\fc64b3dc-cd11-4eed-8445-1c49369ed4a8_photo_2025-07-24_21-05-46.jpg"
     },
     {
-      "Identity": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\web.config",
+      "Identity": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\web.config",
       "SourceId": "LibraryManagementAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\wwwroot\\",
       "BasePath": "_content/LibraryManagementAPI",
       "RelativePath": "web.config",
       "AssetKind": "All",

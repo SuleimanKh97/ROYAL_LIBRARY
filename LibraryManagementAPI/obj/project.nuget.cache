@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jBbNdh1+FI0=",
+  "dgSpecHash": "na4a9rraP0s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\LibraryManagementAPI.csproj",
+  "projectFilePath": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\LibraryManagementAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ENG.K\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\ENG.K\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

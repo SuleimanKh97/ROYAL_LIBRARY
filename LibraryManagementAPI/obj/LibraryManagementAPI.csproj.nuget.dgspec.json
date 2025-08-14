@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\LibraryManagementAPI.csproj": {}
+    "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\LibraryManagementAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\LibraryManagementAPI.csproj": {
+    "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\LibraryManagementAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\LibraryManagementAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\LibraryManagementAPI.csproj",
         "projectName": "LibraryManagementAPI",
-        "projectPath": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\LibraryManagementAPI.csproj",
+        "projectPath": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\LibraryManagementAPI.csproj",
         "packagesPath": "C:\\Users\\ENG.K\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ENG.K\\Desktop\\Work\\Main_Library\\final\\LibraryManagementAPI\\obj\\",
+        "outputPath": "C:\\Users\\ENG.K\\Documents\\Main_Library v2 style2\\final\\ROYAL_LIBRARY\\LibraryManagementAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ENG.K\\AppData\\Roaming\\NuGet\\NuGet.Config"
