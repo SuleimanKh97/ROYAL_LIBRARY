@@ -1,0 +1,102 @@
+/* Custom Sweet Alert Styles */
+.swal2-popup {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+
+.swal2-title {
+  color: #92400e !important;
+  font-weight: bold !important;
+}
+
+.swal2-html-container {
+  color: #78350f !important;
+  font-size: 1.1rem !important;
+}
+
+.swal2-confirm {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+  border: 2px solid #92400e !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal2-confirm:hover {
+  background: linear-gradient(135deg, #d97706, #b45309) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3) !important;
+}
+
+.swal2-cancel {
+  background: linear-gradient(135deg, #6b7280, #4b5563) !important;
+  border: 2px solid #374151 !important;
+  border-radius: 12px !important;
+  font-weight: bold !important;
+  transition: all 0.3s ease !important;
+}
+
+.swal2-cancel:hover {
+  background: linear-gradient(135deg, #4b5563, #374151) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(107, 114, 128, 0.3) !important;
+}
+
+.swal2-icon {
+  border-width: 4px !important;
+}
+
+.swal2-icon.swal2-success {
+  border-color: #10b981 !important;
+}
+
+.swal2-icon.swal2-error {
+  border-color: #ef4444 !important;
+}
+
+.swal2-icon.swal2-warning {
+  border-color: #f59e0b !important;
+}
+
+.swal2-icon.swal2-info {
+  border-color: #3b82f6 !important;
+}
+
+.swal2-icon.swal2-question {
+  border-color: #8b5cf6 !important;
+}
+
+/* Toast notifications */
+.swal2-toast {
+  background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+  border: 2px solid #f59e0b !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2) !important;
+}
+
+.swal2-toast .swal2-title {
+  color: #92400e !important;
+  font-size: 1.1rem !important;
+}
+
+.swal2-toast .swal2-html-container {
+  color: #78350f !important;
+  font-size: 1rem !important;
+}
+
+/* Animation for success toasts */
+.swal2-toast.swal2-show {
+  animation: slideInRight 0.5s ease-out !important;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
