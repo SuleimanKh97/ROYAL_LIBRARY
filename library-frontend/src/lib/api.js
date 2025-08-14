@@ -31,6 +31,71 @@ function deepCamelize(value) {
   return value;
 }
 
+function convertKeysToCamelCase(obj) {
+    if (obj === null || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) return obj.map(convertKeysToCamelCase);
+    
+    const camelCaseObj = {};
+    for (const [key, value] of Object.entries(obj)) {
+        const camelKey = key.replace(/([-_][a-z])/g, (group) =>
+            group.replace('-', '').replace('_', '').toUpperCase()
+        );
+        camelCaseObj[camelKey] = convertKeysToCamelCase(value);
+    }
+    return camelCaseObj;
+}
+
+// Enhanced API call function with ngrok bypass headers
+async function apiCall(endpoint, options = {}) {
+    const url = `${API_BASE_URL}${endpoint}`;
+    
+    // Add headers to bypass ngrok warning page
+    const headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'ngrok-skip-browser-warning': 'true', // Skip ngrok warning page
+        'User-Agent': 'RoyalLibrary/1.0', // Custom user agent
+        ...options.headers
+    };
+
+    const config = {
+        method: options.method || 'GET',
+        headers,
+        ...options
+    };
+
+    if (options.body) {
+        config.body = JSON.stringify(options.body);
+    }
+
+    console.log('Making API call to:', url);
+    console.log('Options:', config);
+
+    try {
+        const response = await fetch(url, config);
+        console.log('Response status:', response.status);
+        console.log('Response headers:', Object.fromEntries(response.headers.entries()));
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+            const data = await response.json();
+            console.log('API call successful, JSON result:', data);
+            return convertKeysToCamelCase(data);
+        } else {
+            const text = await response.text();
+            console.log('API call successful, text result:', text);
+            throw new Error('Expected JSON response but got: ' + text.substring(0, 200));
+        }
+    } catch (error) {
+        console.log('API call error:', error);
+        throw error;
+    }
+}
+
 class ApiService {
   constructor() {
     this.baseURL = API_BASE_URL;
