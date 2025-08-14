@@ -1,4 +1,9 @@
+// API Configuration
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://b878c276ebfa.ngrok-free.app/api';
+
+// Debug: Log the API base URL
+console.log('🔧 API Base URL:', API_BASE_URL);
+console.log('🔧 Environment Variable:', import.meta.env.VITE_API_BASE_URL);
 
 // Helper: deep-convert object keys from PascalCase to camelCase
 function isPlainObject(value) {
