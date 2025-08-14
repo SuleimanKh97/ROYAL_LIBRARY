@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -22,7 +23,7 @@ import apiService from './lib/api.js'
 import './App.css'
 
 // Header Component with Glassmorphism
-function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurrentPage, scrollToSection }) {
+function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, scrollToSection }) {
   const [searchTerm, setSearchTerm] = useState('')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -40,8 +41,10 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
     onSearch(searchTerm)
   }
 
+  const navigate = useNavigate()
+  
   const handleNavigation = (page) => {
-    setCurrentPage(page)
+    navigate(`/${page}`)
     setIsMenuOpen(false)
   }
 
@@ -50,7 +53,7 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo with Neumorphism - Black & Gold Theme */}
-          <div className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-all duration-300" onClick={() => setCurrentPage('home')}>
+          <div className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-all duration-300" onClick={() => navigate('/')}>
             <div className="neumorphism p-3 rounded-2xl hover-lift">
               <img 
                 src="/royal-study-logo.png" 
@@ -127,7 +130,7 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
                 <Button 
                   variant="default" 
                   size="sm" 
-                  onClick={() => setCurrentPage('my-attempts')}
+                  onClick={() => navigate('/my-attempts')}
                   className={`hidden sm:flex items-center px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500 text-black hover:bg-yellow-400 border border-yellow-400' : 'neumorphism text-black hover:bg-yellow-400'}`}
                 >
                   <span>📊 محاولاتي</span>
@@ -161,7 +164,7 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
                   <span>🔑 تسجيل الدخول</span>
                 </Button>
                 <Button 
-                  onClick={() => setCurrentPage('register')} 
+                  onClick={() => navigate('/register')} 
                   className={`px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500 text-black hover:bg-yellow-400 border border-yellow-400' : 'neumorphism text-black hover:bg-yellow-400'}`}
                 >
                   <span>📝 التسجيل</span>
@@ -226,11 +229,11 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
                     </div>
                     <span className={`text-sm ${isScrolled ? 'text-yellow-200' : 'text-amber-100'}`}>مرحباً، {currentUser.firstName} 👋</span>
                   </div>
-                  <button 
-                    onClick={() => {
-                      setCurrentPage('my-attempts')
-                      setIsMenuOpen(false)
-                    }}
+                                      <button 
+                      onClick={() => {
+                        navigate('/my-attempts')
+                        setIsMenuOpen(false)
+                      }}
                     className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl mb-3 hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
                   >
                     📊 محاولاتي
@@ -260,7 +263,7 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
                   </button>
                   <button 
                     onClick={() => {
-                      setCurrentPage('register')
+                      navigate('/register')
                       setIsMenuOpen(false)
                     }}
                     className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
@@ -278,7 +281,7 @@ function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, setCurr
 }
 
 // Hero Section with Aurora UI
-function HeroSection({ setCurrentPage, scrollToSection }) {
+function HeroSection({ scrollToSection }) {
   return (
     <section className="aurora-bg text-white py-32 relative overflow-hidden particles" dir="rtl">
       {/* Aurora Background Elements */}
@@ -335,7 +338,7 @@ function HeroSection({ setCurrentPage, scrollToSection }) {
           <Button 
             size="lg" 
             className="text-2xl px-10 md:px-12 py-6 neumorphism text-black hover:bg-yellow-400 font-extrabold rounded-3xl shadow-2xl transition-all duration-500 hover-lift hover-glow"
-            onClick={() => setCurrentPage && setCurrentPage('books')}
+            onClick={() => navigate('/books')}
           >
             <Sparkles className="h-6 w-6 ml-3" />
             📚 تصفح الكتب الآن
@@ -864,6 +867,8 @@ function Footer() {
 
 // Main App Component
 function App() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [books, setBooks] = useState([])
   const [featuredBooks, setFeaturedBooks] = useState([])
   const [newReleases, setNewReleases] = useState([])
@@ -873,7 +878,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null)
   const [showAdminPanel, setShowAdminPanel] = useState(false)
   const [showLoginModal, setShowLoginModal] = useState(false)
-  const [currentPage, setCurrentPage] = useState('home') // 'home', 'books', 'authors', 'categories', 'contact'
   const [selectedCategoryForBooks, setSelectedCategoryForBooks] = useState('all')
   const [selectedAuthorForBooks, setSelectedAuthorForBooks] = useState('all')
 
@@ -882,30 +886,33 @@ function App() {
     setCurrentUser(apiService.getCurrentUser())
   }, [])
 
-  // Handle URL changes to update current page
-  useEffect(() => {
-    const pathname = window.location.pathname
+  // Get current page from location
+  const getCurrentPage = () => {
+    const pathname = location.pathname
     
     if (pathname.startsWith('/quiz/') && pathname !== '/quiz/') {
-      setCurrentPage('quiz')
+      return 'quiz'
     } else if (pathname.startsWith('/quiz-results')) {
-      setCurrentPage('quiz-results')
+      return 'quiz-results'
     } else if (pathname.startsWith('/my-attempts')) {
-      setCurrentPage('my-attempts')
+      return 'my-attempts'
     } else if (pathname.startsWith('/quizzes')) {
-      setCurrentPage('quizzes')
+      return 'quizzes'
     } else if (pathname.startsWith('/books')) {
-      setCurrentPage('books')
+      return 'books'
     } else if (pathname.startsWith('/authors')) {
-      setCurrentPage('authors')
+      return 'authors'
     } else if (pathname.startsWith('/categories')) {
-      setCurrentPage('categories')
+      return 'categories'
     } else if (pathname.startsWith('/contact')) {
-      setCurrentPage('contact')
+      return 'contact'
+    } else if (pathname.startsWith('/register')) {
+      return 'register'
     } else if (pathname === '/' || pathname === '') {
-      setCurrentPage('home')
+      return 'home'
     }
-  }, [window.location.pathname])
+    return 'home'
+  }
 
   const loadInitialData = async () => {
     setLoading(true)
@@ -1048,7 +1055,7 @@ ${customerData.customerName}`
 
   // Handle page navigation
   const handleBackToHome = () => {
-    setCurrentPage('home')
+    navigate('/')
     setSelectedCategoryForBooks('all')
     setSelectedAuthorForBooks('all')
     // Scroll to top when returning home
@@ -1061,19 +1068,19 @@ ${customerData.customerName}`
   }
 
   const handleViewAuthorBooks = (author) => {
-    setCurrentPage('books')
+    navigate('/books')
     setSelectedAuthorForBooks(author.id.toString())
   }
 
   const handleViewCategory = (category) => {
-    setCurrentPage('books')
+    navigate('/books')
     setSelectedCategoryForBooks(category.id.toString())
   }
 
   // Handle search from any page
   const handleGlobalSearch = (term) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home')
+    if (getCurrentPage() !== 'home') {
+      navigate('/')
       setSelectedCategoryForBooks('all')
       setSelectedAuthorForBooks('all')
       // Wait for page change then search
@@ -1087,8 +1094,8 @@ ${customerData.customerName}`
 
   // Scroll to section helper
   const scrollToSection = (sectionId) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home')
+    if (getCurrentPage() !== 'home') {
+      navigate('/')
       setSelectedCategoryForBooks('all')
       setSelectedAuthorForBooks('all')
       // Wait for page change then scroll
@@ -1111,138 +1118,6 @@ ${customerData.customerName}`
     return <AdminPanel currentUser={currentUser} onClose={() => setShowAdminPanel(false)} />
   }
 
-  if (currentPage === 'books') {
-    return (
-      <BooksPage 
-        onBack={handleBackToHome}
-        onWhatsAppInquiry={handleWhatsAppInquiry}
-        initialCategory={selectedCategoryForBooks}
-        initialAuthor={selectedAuthorForBooks}
-      />
-    )
-  }
-
-  if (currentPage === 'authors') {
-    return (
-      <AuthorsPage 
-        onBack={handleBackToHome}
-        onViewAuthor={handleViewAuthor}
-        onViewAuthorBooks={handleViewAuthorBooks}
-      />
-    )
-  }
-
-  if (currentPage === 'categories') {
-    return (
-      <CategoriesPage 
-        onBack={handleBackToHome}
-        onViewCategory={handleViewCategory}
-      />
-    )
-  }
-
-  if (currentPage === 'contact') {
-    return (
-      <ContactPage 
-        onBack={handleBackToHome}
-      />
-    )
-  }
-
-  if (currentPage === 'register') {
-    return (
-      <RegisterPage 
-        onBack={handleBackToHome}
-        onLoginSuccess={handleLogin}
-      />
-    )
-  }
-
-  if (currentPage === 'quizzes') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
-        <Header
-          onSearch={handleGlobalSearch}
-          currentUser={currentUser}
-          onLogin={() => setShowLoginModal(true)}
-          onLogout={handleLogout}
-          onOpenAdmin={handleOpenAdmin}
-          setCurrentPage={setCurrentPage}
-          scrollToSection={scrollToSection}
-        />
-        <QuizzesPage />
-        <Footer />
-      </div>
-    )
-  }
-
-  if (currentPage === 'quiz') {
-    const quizId = window.location.pathname.split('/').pop();
-    console.log('Current pathname:', window.location.pathname);
-    console.log('Extracted quizId:', quizId);
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
-        <Header
-          onSearch={handleGlobalSearch}
-          currentUser={currentUser}
-          onLogin={() => setShowLoginModal(true)}
-          onLogout={handleLogout}
-          onOpenAdmin={handleOpenAdmin}
-          setCurrentPage={setCurrentPage}
-          scrollToSection={scrollToSection}
-        />
-        <QuizPage quizId={quizId} />
-        <Footer />
-      </div>
-    )
-  }
-
-  if (currentPage === 'quiz-results') {
-    const urlParams = new URLSearchParams(window.location.search);
-    const resultsParam = urlParams.get('results');
-    let results = null;
-    if (resultsParam) {
-      try {
-        results = JSON.parse(decodeURIComponent(resultsParam));
-      } catch (error) {
-        console.error('Error parsing results from URL:', error);
-      }
-    }
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
-        <Header
-          onSearch={handleGlobalSearch}
-          currentUser={currentUser}
-          onLogin={() => setShowLoginModal(true)}
-          onLogout={handleLogout}
-          onOpenAdmin={handleOpenAdmin}
-          setCurrentPage={setCurrentPage}
-          scrollToSection={scrollToSection}
-        />
-        <QuizResultsPage results={results} />
-        <Footer />
-      </div>
-    )
-  }
-
-  if (currentPage === 'my-attempts') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
-        <Header
-          onSearch={handleGlobalSearch}
-          currentUser={currentUser}
-          onLogin={() => setShowLoginModal(true)}
-          onLogout={handleLogout}
-          onOpenAdmin={handleOpenAdmin}
-          setCurrentPage={setCurrentPage}
-          scrollToSection={scrollToSection}
-        />
-        <MyAttemptsPage />
-        <Footer />
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
       <Header
@@ -1251,89 +1126,173 @@ ${customerData.customerName}`
         onLogin={() => setShowLoginModal(true)}
         onLogout={handleLogout}
         onOpenAdmin={handleOpenAdmin}
-        setCurrentPage={setCurrentPage}
         scrollToSection={scrollToSection}
       />
       
-      <main>
-        <HeroSection setCurrentPage={setCurrentPage} scrollToSection={scrollToSection} />
-        
-        {/* Features Section */}
-        <FeaturesSection />
-        
-        {/* Featured Books Section with Aurora UI */}
-        {featuredBooks.length > 0 && (
-          <section id="featured-books" className="py-24 aurora-bg text-white relative overflow-hidden" dir="rtl">
-            {/* Aurora Background Elements */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-20 left-20 text-6xl float">⭐</div>
-              <div className="absolute bottom-20 right-20 text-5xl float" style={{animationDelay: '3s'}}>📚</div>
-              <div className="absolute top-1/2 right-1/4 text-4xl float" style={{animationDelay: '6s'}}>✨</div>
-            </div>
-            
-            <div className="container mx-auto px-4 relative z-10">
-              <div className="text-center mb-16">
-                <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">⭐ الكتب المميزة</h2>
-                <div className="glass-card inline-block px-8 py-4 rounded-2xl">
-                  <p className="text-3xl text-yellow-100 font-bold drop-shadow-lg">📚 اكتشف أفضل الكتب المختارة خصيصاً للأطفال</p>
-                </div>
-              </div>
-              <BooksGrid
-                books={featuredBooks}
-                loading={false}
-                onWhatsAppInquiry={handleWhatsAppInquiry}
-              />
-            </div>
-          </section>
-        )}
+      <Routes>
+        <Route path="/" element={
+          <>
+            <main>
+              <HeroSection scrollToSection={scrollToSection} />
+              
+              {/* Features Section */}
+              <FeaturesSection />
+              
+              {/* Featured Books Section with Aurora UI */}
+              {featuredBooks.length > 0 && (
+                <section id="featured-books" className="py-24 aurora-bg text-white relative overflow-hidden" dir="rtl">
+                  {/* Aurora Background Elements */}
+                  <div className="absolute inset-0 opacity-10">
+                    <div className="absolute top-20 left-20 text-6xl float">⭐</div>
+                    <div className="absolute bottom-20 right-20 text-5xl float" style={{animationDelay: '3s'}}>📚</div>
+                    <div className="absolute top-1/2 right-1/4 text-4xl float" style={{animationDelay: '6s'}}>✨</div>
+                  </div>
+                  
+                  <div className="container mx-auto px-4 relative z-10">
+                    <div className="text-center mb-16">
+                      <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">⭐ الكتب المميزة</h2>
+                      <div className="glass-card inline-block px-8 py-4 rounded-2xl">
+                        <p className="text-3xl text-yellow-100 font-bold drop-shadow-lg">📚 اكتشف أفضل الكتب المختارة خصيصاً للأطفال</p>
+                      </div>
+                    </div>
+                    <BooksGrid
+                      books={featuredBooks}
+                      loading={false}
+                      onWhatsAppInquiry={handleWhatsAppInquiry}
+                    />
+                  </div>
+                </section>
+              )}
 
-        {/* New Releases Section with Morphing Background */}
-        {newReleases.length > 0 && (
-          <section id="new-releases" className="py-24 morphing-bg text-white relative overflow-hidden" dir="rtl">
-            {/* Particle Effect */}
-            <div className="absolute inset-0 opacity-20">
-              <div className="absolute top-10 right-10 text-5xl float">🆕</div>
-              <div className="absolute bottom-10 left-10 text-6xl float" style={{animationDelay: '2s'}}>🎉</div>
-              <div className="absolute top-1/3 left-1/3 text-4xl float" style={{animationDelay: '4s'}}>📖</div>
-            </div>
-            
-            <div className="container mx-auto px-4 relative z-10">
-              <div className="text-center mb-16">
-                <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">🆕 الإصدارات الجديدة</h2>
-                <div className="glass-card inline-block px-8 py-4 rounded-2xl">
-                  <p className="text-3xl text-white font-bold drop-shadow-lg">🎉 آخر الكتب المثيرة التي وصلت إلى مكتبتنا</p>
-                </div>
-              </div>
-              <BooksGrid
-                books={newReleases}
-                loading={false}
-                onWhatsAppInquiry={handleWhatsAppInquiry}
-              />
-            </div>
-          </section>
-        )}
+              {/* New Releases Section with Morphing Background */}
+              {newReleases.length > 0 && (
+                <section id="new-releases" className="py-24 morphing-bg text-white relative overflow-hidden" dir="rtl">
+                  {/* Particle Effect */}
+                  <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-10 right-10 text-5xl float">🆕</div>
+                    <div className="absolute bottom-10 left-10 text-6xl float" style={{animationDelay: '2s'}}>🎉</div>
+                    <div className="absolute top-1/3 left-1/3 text-4xl float" style={{animationDelay: '4s'}}>📖</div>
+                  </div>
+                  
+                  <div className="container mx-auto px-4 relative z-10">
+                    <div className="text-center mb-16">
+                      <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">🆕 الإصدارات الجديدة</h2>
+                      <div className="glass-card inline-block px-8 py-4 rounded-2xl">
+                        <p className="text-3xl text-white font-bold drop-shadow-lg">🎉 آخر الكتب المثيرة التي وصلت إلى مكتبتنا</p>
+                      </div>
+                    </div>
+                    <BooksGrid
+                      books={newReleases}
+                      loading={false}
+                      onWhatsAppInquiry={handleWhatsAppInquiry}
+                    />
+                  </div>
+                </section>
+              )}
 
-        {/* All Books Section with Neumorphism - Black & Gold Theme */}
-        <section id="all-books" className="py-24 bg-gradient-to-br from-gray-50 to-gray-100" dir="rtl">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <div className="neumorphism p-8 rounded-3xl inline-block">
-                <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">
-                  {searchTerm ? `🔍 نتائج البحث عن: "${searchTerm}"` : '📚 جميع الكتب'}
-                </h2>
-                <p className="text-3xl text-gray-800 font-bold">📖 تصفح مجموعتنا الكاملة من الكتب الرائعة</p>
-              </div>
-            </div>
-            <BooksGrid
-              books={books}
-              loading={loading}
+              {/* All Books Section with Neumorphism - Black & Gold Theme */}
+              <section id="all-books" className="py-24 bg-gradient-to-br from-gray-50 to-gray-100" dir="rtl">
+                <div className="container mx-auto px-4">
+                  <div className="text-center mb-16">
+                    <div className="neumorphism p-8 rounded-3xl inline-block">
+                      <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">
+                        {searchTerm ? `🔍 نتائج البحث عن: "${searchTerm}"` : '📚 جميع الكتب'}
+                      </h2>
+                      <p className="text-3xl text-gray-800 font-bold">📖 تصفح مجموعتنا الكاملة من الكتب الرائعة</p>
+                    </div>
+                  </div>
+                  <BooksGrid
+                    books={books}
+                    loading={loading}
+                    onWhatsAppInquiry={handleWhatsAppInquiry}
+                  />
+                </div>
+              </section>
+            </main>
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/books" element={
+          <>
+            <BooksPage 
+              onBack={handleBackToHome}
               onWhatsAppInquiry={handleWhatsAppInquiry}
+              initialCategory={selectedCategoryForBooks}
+              initialAuthor={selectedAuthorForBooks}
             />
-          </div>
-        </section>
-      </main>
-
-      <Footer />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/authors" element={
+          <>
+            <AuthorsPage 
+              onBack={handleBackToHome}
+              onViewAuthor={handleViewAuthor}
+              onViewAuthorBooks={handleViewAuthorBooks}
+            />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/categories" element={
+          <>
+            <CategoriesPage 
+              onBack={handleBackToHome}
+              onViewCategory={handleViewCategory}
+            />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/contact" element={
+          <>
+            <ContactPage 
+              onBack={handleBackToHome}
+            />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/register" element={
+          <>
+            <RegisterPage 
+              onBack={handleBackToHome}
+              onLoginSuccess={handleLogin}
+            />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/quizzes" element={
+          <>
+            <QuizzesPage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/quiz/:quizId" element={
+          <>
+            <QuizPage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/quiz-results" element={
+          <>
+            <QuizResultsPage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/my-attempts" element={
+          <>
+            <MyAttemptsPage />
+            <Footer />
+          </>
+        } />
+      </Routes>
 
       {/* Login Modal */}
       <LoginModal
@@ -1341,8 +1300,6 @@ ${customerData.customerName}`
         onClose={() => setShowLoginModal(false)}
         onLogin={handleLogin}
       />
-
-
     </div>
   )
 }

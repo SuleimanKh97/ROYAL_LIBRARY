@@ -7,6 +7,42 @@
   "ignoreCommand": "echo 'Forcing npm usage'",
   "rewrites": [
     {
+      "source": "/quizzes",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/quiz/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/quiz-results",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/my-attempts",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/books",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/authors",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/categories",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/register",
+      "destination": "/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
