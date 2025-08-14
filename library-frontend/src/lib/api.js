@@ -48,7 +48,10 @@ function convertKeysToCamelCase(obj) {
 
 // Enhanced API call function with ngrok bypass headers and retry mechanism
 async function apiCall(endpoint, options = {}) {
-    const url = `${API_BASE_URL}${endpoint}`;
+    // Ensure the endpoint starts with / and the base URL ends with /api
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    const baseUrl = API_BASE_URL.endsWith('/api') ? API_BASE_URL : `${API_BASE_URL}/api`;
+    const url = `${baseUrl}${cleanEndpoint}`;
     
     // Add headers to bypass ngrok warning page - comprehensive approach
     const headers = {
