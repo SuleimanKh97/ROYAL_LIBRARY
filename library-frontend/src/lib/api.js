@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://modern-comics-fly.loca.lt/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://witty-apples-relax.loca.lt/api';
 
 // Debug: Log the API base URL
 console.log('🔧 API Base URL:', API_BASE_URL);
@@ -9,23 +9,31 @@ console.log('🔧 Environment Variable:', import.meta.env.VITE_API_BASE_URL);
 function fixImageUrl(imageUrl) {
     if (!imageUrl) return imageUrl;
     
-    // Replace localhost:5035 with LocalTunnel URL
+    // Get current tunnel URL
+    const tunnelUrl = API_BASE_URL.replace('/api', '');
+    
+    // Replace localhost:5035 with current LocalTunnel URL
     if (imageUrl.includes('localhost:5035')) {
-        const tunnelUrl = API_BASE_URL.replace('/api', '');
         const fixedUrl = imageUrl.replace('http://localhost:5035', tunnelUrl);
-        console.log('🔧 Fixed image URL:', { original: imageUrl, fixed: fixedUrl });
+        console.log('🔧 Fixed localhost image URL:', { original: imageUrl, fixed: fixedUrl });
         return fixedUrl;
     }
     
-    // If it's already a LocalTunnel URL but wrong subdomain, try to fix it
-    if (imageUrl.includes('loca.lt') && !imageUrl.includes(API_BASE_URL.replace('/api', ''))) {
-        const tunnelUrl = API_BASE_URL.replace('/api', '');
+    // If it's already a LocalTunnel URL but wrong subdomain, fix it
+    if (imageUrl.includes('loca.lt')) {
         const path = imageUrl.split('/uploads/')[1];
         if (path) {
             const fixedUrl = `${tunnelUrl}/uploads/${path}`;
             console.log('🔧 Fixed LocalTunnel image URL:', { original: imageUrl, fixed: fixedUrl });
             return fixedUrl;
         }
+    }
+    
+    // If it's a relative path, make it absolute
+    if (imageUrl.startsWith('/uploads/')) {
+        const fixedUrl = `${tunnelUrl}${imageUrl}`;
+        console.log('🔧 Fixed relative image URL:', { original: imageUrl, fixed: fixedUrl });
+        return fixedUrl;
     }
     
     return imageUrl;
@@ -166,6 +174,43 @@ async function apiCall(endpoint, options = {}) {
     }
 
     throw lastError;
+}
+
+// Helper: Test if image URL is accessible
+async function testImageUrl(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        return response.ok;
+    } catch (error) {
+        console.log('🔧 Image URL test failed:', url, error);
+        return false;
+    }
+}
+
+// Helper: Get best available image URL
+async function getBestImageUrl(book) {
+    const tunnelUrl = API_BASE_URL.replace('/api', '');
+    
+    // Try coverImageUrl first
+    if (book.coverImageUrl) {
+        const fixedUrl = fixImageUrl(book.coverImageUrl);
+        if (await testImageUrl(fixedUrl)) {
+            return fixedUrl;
+        }
+    }
+    
+    // Try images array
+    if (book.images && book.images.length > 0) {
+        for (const image of book.images) {
+            const fixedUrl = fixImageUrl(image.imageUrl);
+            if (await testImageUrl(fixedUrl)) {
+                return fixedUrl;
+            }
+        }
+    }
+    
+    // If no images work, return placeholder
+    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2YwZjBmMCIvPgogIDx0ZXh0IHg9IjE1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjY2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Zhtin2YbYqDwvdGV4dD4KPC9zdmc+';
 }
 
 class ApiService {
@@ -516,5 +561,7 @@ class ApiService {
 }
 
 // Create and export a singleton instance
-export default new ApiService();
+const apiService = new ApiService();
+
+export { apiService as default, fixImageUrl, testImageUrl, getBestImageUrl };
 

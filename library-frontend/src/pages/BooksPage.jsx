@@ -20,7 +20,7 @@ import {
   Tag,
   ArrowLeft
 } from 'lucide-react'
-import apiService from '../lib/api.js'
+import apiService, { fixImageUrl } from '../lib/api.js'
 
 export default function BooksPage({ onBack, onWhatsAppInquiry, onViewDetails, initialCategory, initialAuthor }) {
   const [books, setBooks] = useState([])
@@ -143,13 +143,15 @@ export default function BooksPage({ onBack, onWhatsAppInquiry, onViewDetails, in
     
     // First try coverImageUrl
     if (book.coverImageUrl) {
-      console.log('Using coverImageUrl:', book.coverImageUrl)
-      return book.coverImageUrl
+      const fixedUrl = fixImageUrl(book.coverImageUrl);
+      console.log('Using coverImageUrl:', fixedUrl)
+      return fixedUrl
     }
     // Then try images array
     if (book.images && book.images.length > 0) {
-      console.log('Using images[0].imageUrl:', book.images[0].imageUrl)
-      return book.images[0].imageUrl
+      const fixedUrl = fixImageUrl(book.images[0].imageUrl);
+      console.log('Using images[0].imageUrl:', fixedUrl)
+      return fixedUrl
     }
     // Fallback to placeholder
     console.log('Using placeholder image')
@@ -418,10 +420,10 @@ function BookDetailsModal({ book, isOpen, onClose, onWhatsAppInquiry }) {
 
   const getBookImage = () => {
     if (book.coverImageUrl) {
-      return book.coverImageUrl
+      return fixImageUrl(book.coverImageUrl)
     }
     if (book.images && book.images.length > 0) {
-      return book.images[0].imageUrl
+      return fixImageUrl(book.images[0].imageUrl)
     }
     return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiM2NjY2NjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7Zhtin2YbYqDwvdGV4dD4KPC9zdmc+'
   }

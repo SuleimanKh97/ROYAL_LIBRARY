@@ -21,6 +21,7 @@ import { showSuccess, showError } from './lib/sweetAlert.js'
 
 import apiService from './lib/api.js'
 import './App.css'
+import { fixImageUrl } from './lib/api.js'
 
 // Header Component with Glassmorphism
 function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, scrollToSection }) {
@@ -473,10 +474,10 @@ function BookCard({ book, onWhatsAppInquiry }) {
 
   const getBookImage = () => {
     if (book.coverImageUrl) {
-      return book.coverImageUrl
+      return fixImageUrl(book.coverImageUrl)
     }
     if (book.images && book.images.length > 0) {
-      return book.images[0].imageUrl
+      return fixImageUrl(book.images[0].imageUrl)
     }
     return 'https://via.placeholder.com/300x400/f0f0f0/666?text=كتاب'
   }
