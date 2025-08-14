@@ -1,8 +1,10 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run vercel-build",
   "outputDirectory": "dist",
   "framework": "vite",
   "installCommand": "npm install --legacy-peer-deps",
+  "packageManager": "npm",
+  "ignoreCommand": "echo 'Forcing npm usage'",
   "rewrites": [
     {
       "source": "/(.*)",
