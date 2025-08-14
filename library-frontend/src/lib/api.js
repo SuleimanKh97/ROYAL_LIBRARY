@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://bright-ties-dress.loca.lt/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://modern-comics-fly.loca.lt/api';
 
 // Debug: Log the API base URL
 console.log('🔧 API Base URL:', API_BASE_URL);
