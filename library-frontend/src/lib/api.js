@@ -5,6 +5,19 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://modern-comics
 console.log('🔧 API Base URL:', API_BASE_URL);
 console.log('🔧 Environment Variable:', import.meta.env.VITE_API_BASE_URL);
 
+// Helper: Fix image URLs to use LocalTunnel instead of localhost
+function fixImageUrl(imageUrl) {
+    if (!imageUrl) return imageUrl;
+    
+    // Replace localhost:5035 with LocalTunnel URL
+    if (imageUrl.includes('localhost:5035')) {
+        const tunnelUrl = API_BASE_URL.replace('/api', '');
+        return imageUrl.replace('http://localhost:5035', tunnelUrl);
+    }
+    
+    return imageUrl;
+}
+
 // Helper: deep-convert object keys from PascalCase to camelCase
 function isPlainObject(value) {
   return Object.prototype.toString.call(value) === '[object Object]';
@@ -41,7 +54,13 @@ function convertKeysToCamelCase(obj) {
         const camelKey = key.replace(/([-_][a-z])/g, (group) =>
             group.replace('-', '').replace('_', '').toUpperCase()
         );
-        camelCaseObj[camelKey] = convertKeysToCamelCase(value);
+        
+        // Fix image URLs for specific fields
+        if ((key === 'coverImageUrl' || key === 'imageUrl') && typeof value === 'string') {
+            camelCaseObj[camelKey] = fixImageUrl(value);
+        } else {
+            camelCaseObj[camelKey] = convertKeysToCamelCase(value);
+        }
     }
     return camelCaseObj;
 }

@@ -1017,7 +1017,7 @@ function App() {
       }
 
       // Generate WhatsApp URL
-              const libraryPhone = '+962785462983' // Library WhatsApp number
+      const libraryPhone = '+962785462983' // Library WhatsApp number
       const message = `السلام عليكم ورحمة الله وبركاته
 
 أريد الاستفسار عن الكتاب التالي:
@@ -1035,8 +1035,24 @@ ${customerData.customerName}`
 
       const whatsappUrl = `https://wa.me/${libraryPhone.replace('+', '')}?text=${encodeURIComponent(message)}`
       
-      // Open WhatsApp
-      window.open(whatsappUrl, '_blank')
+      // Check if it's iOS device
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+      
+      if (isIOS) {
+        // For iOS, try to open WhatsApp app directly
+        const whatsappAppUrl = `whatsapp://send?phone=${libraryPhone.replace('+', '')}&text=${encodeURIComponent(message)}`;
+        
+        // Try to open WhatsApp app first
+        window.location.href = whatsappAppUrl;
+        
+        // Fallback to web version after a short delay
+        setTimeout(() => {
+          window.open(whatsappUrl, '_blank');
+        }, 2000);
+      } else {
+        // For other devices, open in new tab
+        window.open(whatsappUrl, '_blank');
+      }
       
       // Show success message
       showSuccess('تم فتح الواتساب! يمكنك الآن إرسال استفسارك.')
