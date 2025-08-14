@@ -1,11 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button } from './ui/button'
 import { Home, Brain, BarChart2, Phone, ArrowLeft } from 'lucide-react'
 
 export default function PageNav({ showBack = true, className = '' }) {
+  const navigate = useNavigate()
+  
   const go = (path) => {
     if (!path) return
-    window.location.href = path
+    navigate(path)
   }
 
   return (

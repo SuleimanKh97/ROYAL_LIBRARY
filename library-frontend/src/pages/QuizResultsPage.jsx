@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -8,33 +9,35 @@ import apiService from '../lib/api';
 import { showError } from '../lib/sweetAlert';
 import PageNav from '../components/PageNav';
 
-const QuizResultsPage = ({ results: initialResults }) => {
-  const [results, setResults] = useState(initialResults || null);
-  const [loading, setLoading] = useState(!initialResults);
+const QuizResultsPage = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // قراءة النتائج من URL إذا لم تكن متوفرة
+  // قراءة النتائج من URL
   useEffect(() => {
-    if (!initialResults) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const resultsParam = urlParams.get('results');
-      if (resultsParam) {
-        try {
-          const parsedResults = JSON.parse(decodeURIComponent(resultsParam));
-          setResults(parsedResults);
-          setLoading(false);
-        } catch (error) {
-          console.error('Error parsing results from URL:', error);
-        }
+    const resultsParam = searchParams.get('results');
+    if (resultsParam) {
+      try {
+        const parsedResults = JSON.parse(decodeURIComponent(resultsParam));
+        setResults(parsedResults);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error parsing results from URL:', error);
+        setLoading(false);
       }
+    } else {
+      setLoading(false);
     }
-  }, [initialResults]);
+  }, [searchParams]);
 
   useEffect(() => {
-    if (!initialResults) {
+    if (!results) {
       // إذا لم تكن النتائج متوفرة، يمكن جلبها من API
       fetchResults();
     }
-  }, [initialResults]);
+  }, [results]);
 
   const fetchResults = async () => {
     try {
@@ -105,7 +108,7 @@ const QuizResultsPage = ({ results: initialResults }) => {
     return (
       <div className="text-center py-12">
         <p className="text-gray-500 text-lg">لا توجد نتائج متاحة</p>
-        <Button onClick={() => window.location.href = '/quizzes'} className="mt-4">
+        <Button onClick={() => navigate('/quizzes')} className="mt-4">
           العودة للكويزات
         </Button>
       </div>
@@ -278,10 +281,10 @@ const QuizResultsPage = ({ results: initialResults }) => {
 
       {/* Actions */}
       <div className="flex justify-center space-x-4 space-x-reverse mt-8">
-        <Button onClick={() => window.location.href = '/quizzes'} variant="outline" className="border-amber-300 text-amber-900 hover:bg-amber-100">
+        <Button onClick={() => navigate('/quizzes')} variant="outline" className="border-amber-300 text-amber-900 hover:bg-amber-100">
           العودة للكويزات
         </Button>
-        <Button onClick={() => window.location.href = '/my-attempts'} className="bg-amber-500 text-black hover:bg-amber-400">
+        <Button onClick={() => navigate('/my-attempts')} className="bg-amber-500 text-black hover:bg-amber-400">
           عرض جميع محاولاتي
         </Button>
       </div>

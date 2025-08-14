@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
@@ -18,6 +19,7 @@ import {
 import apiService from '../lib/api.js'
 
 export default function RegisterPage({ onBack, onLoginSuccess }) {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -200,9 +202,9 @@ export default function RegisterPage({ onBack, onLoginSuccess }) {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200" dir="rtl">
       <div className="container mx-auto px-4 pt-4">
         <div className="flex gap-2 mb-2">
-          <button onClick={() => window.location.href='/'} className="text-sm underline">الرئيسية</button>
-          <button onClick={() => window.location.href='/quizzes'} className="text-sm underline">الكويزات</button>
-          <button onClick={() => window.location.href='/my-attempts'} className="text-sm underline">محاولاتي</button>
+          <button onClick={() => navigate('/')} className="text-sm underline">الرئيسية</button>
+          <button onClick={() => navigate('/quizzes')} className="text-sm underline">الكويزات</button>
+          <button onClick={() => navigate('/my-attempts')} className="text-sm underline">محاولاتي</button>
           <button onClick={() => window.history.back()} className="text-sm underline">رجوع</button>
         </div>
       </div>

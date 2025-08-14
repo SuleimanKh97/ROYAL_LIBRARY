@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
@@ -10,6 +11,7 @@ import PageNav from '../components/PageNav';
 import { showError } from '../lib/sweetAlert';
 
 const MyAttemptsPage = () => {
+  const navigate = useNavigate();
   const [attempts, setAttempts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
@@ -82,7 +84,7 @@ const MyAttemptsPage = () => {
   };
 
   const handleViewResults = (attempt) => {
-    window.location.href = `/quiz-results?results=${encodeURIComponent(JSON.stringify(attempt))}`;
+    navigate(`/quiz-results?results=${encodeURIComponent(JSON.stringify(attempt))}`);
   };
 
   const subjects = ['الرياضيات', 'العلوم', 'اللغة العربية', 'اللغة الإنجليزية', 'الدراسات الاجتماعية', 'التربية الإسلامية'];
@@ -201,7 +203,7 @@ const MyAttemptsPage = () => {
       {!loading && attempts.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-500 text-lg">لا توجد محاولات</p>
-          <Button onClick={() => window.location.href = '/quizzes'} className="mt-4">
+          <Button onClick={() => navigate('/quizzes')} className="mt-4">
             ابدأ كويز جديد
           </Button>
         </div>

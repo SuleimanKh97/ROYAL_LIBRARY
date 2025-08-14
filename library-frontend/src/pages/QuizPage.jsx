@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group';
@@ -8,7 +9,9 @@ import apiService from '../lib/api';
 import { showSuccess, showError, showConfirm } from '../lib/sweetAlert';
 import PageNav from '../components/PageNav';
 
-const QuizPage = ({ quizId }) => {
+const QuizPage = () => {
+  const navigate = useNavigate();
+  const { quizId } = useParams();
   const [quiz, setQuiz] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -68,7 +71,7 @@ const QuizPage = ({ quizId }) => {
     } catch (error) {
       console.error('Error starting quiz:', error);
       showError(error.response?.data?.message || 'حدث خطأ أثناء بدء الكويز');
-      window.location.href = '/quizzes';
+      navigate('/quizzes');
     } finally {
       setLoading(false);
     }
@@ -104,7 +107,7 @@ const QuizPage = ({ quizId }) => {
       showSuccess('تم إرسال الكويز بنجاح!');
       
       // توجيه المستخدم لصفحة النتائج
-      window.location.href = `/quiz-results?results=${encodeURIComponent(JSON.stringify(response))}`;
+      navigate(`/quiz-results?results=${encodeURIComponent(JSON.stringify(response))}`);
     } catch (error) {
       showError(error.response?.data?.message || 'حدث خطأ أثناء إرسال الكويز');
     } finally {
@@ -159,7 +162,7 @@ const QuizPage = ({ quizId }) => {
             </div>
           </div>
           <Button 
-            onClick={() => window.location.href = '/quizzes'}
+            onClick={() => navigate('/quizzes')}
             className="bg-amber-600 hover:bg-amber-700"
           >
             العودة إلى قائمة الكويزات
