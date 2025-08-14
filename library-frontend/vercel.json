@@ -1,44 +1,49 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/quizzes",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/quiz/:path*",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/quiz-results",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/my-attempts",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/books",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/authors",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/categories",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     },
     {
       "source": "/register",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": false
     }
   ]
 }
