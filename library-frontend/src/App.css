@@ -331,6 +331,61 @@
   box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
 }
 
+/* Royal Color Scheme */
+.royal-gradient {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1a1a1a 50%, #2d2d2d 75%, #1a1a1a 100%);
+  position: relative;
+}
+
+.royal-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 215, 0, 0.1) 0%, rgba(218, 165, 32, 0.1) 25%, rgba(255, 193, 7, 0.1) 50%, rgba(255, 215, 0, 0.1) 75%, rgba(218, 165, 32, 0.1) 100%);
+  background-size: 400% 400%;
+  animation: royal-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes royal-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.text-royal-gold {
+  color: #FFD700;
+}
+
+.text-royal-beige {
+  color: #F5F5DC;
+}
+
+.text-royal-black {
+  color: #1a1a1a;
+}
+
+.bg-royal-gold {
+  background-color: #FFD700;
+}
+
+.bg-royal-beige {
+  background-color: #F5F5DC;
+}
+
+.bg-royal-dark-beige {
+  background-color: #E8E8D0;
+}
+
+.bg-royal-black {
+  background-color: #1a1a1a;
+}
+
+.text-royal-black {
+  color: #1a1a1a;
+}
+
 /* Custom Scrollbar - Black & Gold Theme */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;

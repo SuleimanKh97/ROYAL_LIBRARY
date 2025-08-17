@@ -558,6 +558,48 @@ class ApiService {
       body: JSON.stringify(registerData)
     });
   }
+
+  // Calendar/Schedules Methods
+  async getSchedules() {
+    return await this.apiCall('/Schedules');
+  }
+
+  async getSchedule(id) {
+    return await this.apiCall(`/Schedules/${id}`);
+  }
+
+  async createSchedule(scheduleData) {
+    return await this.apiCall('/Schedules', {
+      method: 'POST',
+      body: JSON.stringify(scheduleData)
+    });
+  }
+
+  async updateSchedule(id, scheduleData) {
+    return await this.apiCall(`/Schedules/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(scheduleData)
+    });
+  }
+
+  async deleteSchedule(id) {
+    return await this.apiCall(`/Schedules/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
+  async uploadScheduleFile(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    return await this.apiCall('/Schedules/upload', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        // Don't set Content-Type for FormData, let browser set it
+      }
+    });
+  }
 }
 
 // Create and export a singleton instance

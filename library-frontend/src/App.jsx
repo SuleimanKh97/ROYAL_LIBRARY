@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label.jsx'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog.jsx'
 import { Search, Book, Users, Star, MessageCircle, Phone, Mail, MapPin, Heart, ShoppingCart, Settings, Edit, Trash2, Sparkles, Zap, Target, Award, Shield, Truck, Clock, CheckCircle } from 'lucide-react'
 import AdminPanel from './components/AdminPanel.jsx'
+import Header from './components/Header.jsx'
+import Hero from './components/Hero.jsx'
 import BooksPage from './pages/BooksPage.jsx'
 import AuthorsPage from './pages/AuthorsPage.jsx'
 import CategoriesPage from './pages/CategoriesPage.jsx'
@@ -17,380 +19,17 @@ import QuizzesPage from './pages/QuizzesPage.jsx'
 import QuizPage from './pages/QuizPage.jsx'
 import QuizResultsPage from './pages/QuizResultsPage.jsx'
 import MyAttemptsPage from './pages/MyAttemptsPage.jsx'
+import CalendarPage from './pages/CalendarPage.jsx'
+import AdminCalendarPage from './pages/AdminCalendarPage.jsx'
 import { showSuccess, showError } from './lib/sweetAlert.js'
 
 import apiService from './lib/api.js'
 import './App.css'
 import { fixImageUrl } from './lib/api.js'
 
-// Header Component with Glassmorphism
-function Header({ onSearch, currentUser, onLogin, onLogout, onOpenAdmin, scrollToSection }) {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
-  const handleSearch = (e) => {
-    e.preventDefault()
-    onSearch(searchTerm)
-  }
 
-  const navigate = useNavigate()
-  
-  const handleNavigation = (page) => {
-    navigate(`/${page}`)
-    setIsMenuOpen(false)
-  }
-
-  return (
-    <header className={`sticky top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/90 backdrop-blur-xl border-b border-yellow-400/30' : 'bg-black/80 backdrop-blur-xl border-b border-yellow-400/20'}`} dir="rtl">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo with Neumorphism - Black & Gold Theme */}
-          <div className="flex items-center gap-4 cursor-pointer hover:opacity-90 transition-all duration-300" onClick={() => navigate('/')}>
-            <div className="neumorphism p-3 rounded-2xl hover-lift">
-              <img 
-                src="/royal-study-logo.png" 
-                alt="ROYAL STUDY Logo" 
-                className="h-12 w-12 md:h-14 md:w-14 object-contain"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              <Book className="h-12 w-12 md:h-14 md:w-14 text-gradient-to-r from-yellow-500 to-yellow-600 hidden" />
-            </div>
-            <div className="hidden md:block">
-              <h1 className="text-2xl font-bold gradient-text">👑 ROYAL STUDY</h1>
-              <p className="text-sm text-yellow-200">مكتبة إربد الأولى</p>
-            </div>
-          </div>
-
-          {/* Desktop Navigation with Glassmorphism - Black & Gold Theme */}
-          <nav className="hidden lg:flex items-center gap-2">
-            <button 
-              onClick={() => {
-                scrollToSection('featured-books')
-                setIsMenuOpen(false)
-              }}
-              className={`px-4 py-2 rounded-xl text-sm transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500/20 text-yellow-200 hover:bg-yellow-500/40 border border-yellow-400/30' : 'glass-card text-yellow-100 hover:bg-yellow-800/40'}`}
-            >
-              ⭐ الكتب المميزة
-            </button>
-            <button 
-              onClick={() => handleNavigation('books')}
-              className={`px-4 py-2 rounded-xl text-sm transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500/20 text-yellow-200 hover:bg-yellow-500/40 border border-yellow-400/30' : 'glass-card text-yellow-100 hover:bg-yellow-800/40'}`}
-            >
-              📚 جميع الكتب
-            </button>
-            <button 
-              onClick={() => handleNavigation('quizzes')}
-              className={`px-4 py-2 rounded-xl text-sm transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500/20 text-yellow-200 hover:bg-yellow-500/40 border border-yellow-400/30' : 'glass-card text-yellow-100 hover:bg-yellow-800/40'}`}
-            >
-              🧠 الكويزات
-            </button>
-            <button 
-              onClick={() => handleNavigation('contact')}
-              className={`px-4 py-2 rounded-xl text-sm transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500/20 text-yellow-200 hover:bg-yellow-500/40 border border-yellow-400/30' : 'glass-card text-yellow-100 hover:bg-yellow-800/40'}`}
-            >
-              📞 اتصل بنا
-            </button>
-          </nav>
-
-          {/* Search Bar with Glassmorphism - Black & Gold Theme */}
-          <form onSubmit={handleSearch} className="flex-1 max-w-md mx-4">
-            <div className="relative">
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 text-yellow-400 h-5 w-5" />
-              <Input
-                type="text"
-                placeholder="🔍 ابحث عن كتابك المفضل..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className={`pr-12 text-right border transition-all duration-300 rounded-2xl font-medium ${isScrolled ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-200 placeholder:text-yellow-300 focus:bg-yellow-500/30 focus:border-yellow-400' : 'glass-card bg-white/10 border-yellow-400/30 text-yellow-50 placeholder:text-yellow-200/70 focus:bg-white/20 focus:border-yellow-400/60'}`}
-              />
-            </div>
-          </form>
-
-          {/* User Actions with Neumorphism - Black & Gold Theme */}
-          <div className="flex items-center gap-3">
-            {currentUser ? (
-              <div className="flex items-center gap-3">
-                <div className={`hidden sm:flex items-center gap-3 px-4 py-2 rounded-2xl ${isScrolled ? 'bg-yellow-500/20 border border-yellow-400/30' : 'glass-card'}`}>
-                  <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
-                    <span className="text-black text-sm font-bold">👤</span>
-                  </div>
-                  <span className={`text-sm ${isScrolled ? 'text-yellow-200' : 'text-yellow-100'}`}>مرحباً، {currentUser.firstName} 👋</span>
-                </div>
-                <Button 
-                  variant="default" 
-                  size="sm" 
-                  onClick={() => navigate('/my-attempts')}
-                  className={`hidden sm:flex items-center px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500 text-black hover:bg-yellow-400 border border-yellow-400' : 'neumorphism text-black hover:bg-yellow-400'}`}
-                >
-                  <span>📊 محاولاتي</span>
-                </Button>
-                {apiService.isAdmin() && (
-                  <Button 
-                    variant="default" 
-                    size="sm" 
-                    onClick={onOpenAdmin} 
-                    className={`hidden sm:flex items-center px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-600 text-black hover:bg-yellow-500 border border-yellow-400' : 'neumorphism text-black hover:bg-yellow-500'}`}
-                  >
-                    <Settings className="h-4 w-4 ml-2" />
-                    <span>⚙️ لوحة التحكم</span>
-                  </Button>
-                )}
-                <Button 
-                  variant="default" 
-                  size="sm" 
-                  onClick={onLogout} 
-                  className={`hidden sm:flex items-center px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-red-500 text-white hover:bg-red-600 border border-red-400' : 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700'}`}
-                >
-                  <span>🚪 تسجيل الخروج</span>
-                </Button>
-              </div>
-            ) : (
-              <div className="hidden sm:flex items-center gap-3">
-                <Button 
-                  onClick={onLogin} 
-                  className={`border px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500/20 border-yellow-400/50 text-yellow-200 hover:bg-yellow-500/40' : 'glass-card border-yellow-400/30 text-yellow-100 hover:bg-yellow-800/40'}`}
-                >
-                  <span>🔑 تسجيل الدخول</span>
-                </Button>
-                <Button 
-                  onClick={() => navigate('/register')} 
-                  className={`px-4 py-2 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500 text-black hover:bg-yellow-400 border border-yellow-400' : 'neumorphism text-black hover:bg-yellow-400'}`}
-                >
-                  <span>📝 التسجيل</span>
-                </Button>
-              </div>
-            )}
-            
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`lg:hidden p-3 rounded-xl transition-all duration-300 hover-lift ${isScrolled ? 'bg-yellow-500 text-black hover:bg-yellow-400 border border-yellow-400' : 'neumorphism text-black hover:bg-yellow-600'}`}
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation Menu with Glassmorphism */}
-        {isMenuOpen && (
-          <nav className={`lg:hidden mt-4 pb-4 rounded-2xl ${isScrolled ? 'bg-yellow-500/20 border border-yellow-400/30' : 'glass-card'}`}>
-            <div className="flex flex-col space-y-3 p-4">
-              <button 
-                onClick={() => {
-                  scrollToSection('featured-books')
-                  setIsMenuOpen(false)
-                }}
-                className={`text-right transition-all duration-300 py-3 px-4 rounded-xl hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-yellow-100 hover:bg-yellow-800/40'}`}
-              >
-                ⭐ الكتب المميزة
-              </button>
-              <button 
-                onClick={() => handleNavigation('books')}
-                className={`text-right transition-all duration-300 py-3 px-4 rounded-xl hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-yellow-100 hover:bg-yellow-800/40'}`}
-              >
-                📚 جميع الكتب
-              </button>
-              <button 
-                onClick={() => handleNavigation('quizzes')}
-                className={`text-right transition-all duration-300 py-3 px-4 rounded-xl hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-yellow-100 hover:bg-yellow-800/40'}`}
-              >
-                🧠 الكويزات
-              </button>
-              <button 
-                onClick={() => handleNavigation('contact')}
-                className={`text-right transition-all duration-300 font-bold py-3 px-6 rounded-xl hover-lift ${isScrolled ? 'text-black hover:text-white hover:bg-yellow-500' : 'text-black hover:text-white hover:bg-gradient-to-r hover:from-yellow-500 hover:to-yellow-600'}`}
-              >
-                📞 اتصل بنا
-              </button>
-              
-              {/* Mobile User Actions */}
-              {currentUser ? (
-                <div className={`border-t pt-4 mt-4 ${isScrolled ? 'border-yellow-400/30' : 'border-amber-400/30'}`}>
-                  <div className={`flex items-center gap-3 px-4 py-3 rounded-xl mb-3 ${isScrolled ? 'bg-yellow-500/20 border border-yellow-400/30' : 'glass-card'}`}>
-                    <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
-                      <span className="text-black text-sm font-bold">👤</span>
-                    </div>
-                    <span className={`text-sm ${isScrolled ? 'text-yellow-200' : 'text-amber-100'}`}>مرحباً، {currentUser.firstName} 👋</span>
-                  </div>
-                                      <button 
-                      onClick={() => {
-                        navigate('/my-attempts')
-                        setIsMenuOpen(false)
-                      }}
-                    className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl mb-3 hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
-                  >
-                    📊 محاولاتي
-                  </button>
-                  {apiService.isAdmin() && (
-                    <button 
-                      onClick={onOpenAdmin}
-                      className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl mb-3 hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
-                    >
-                      ⚙️ لوحة التحكم
-                    </button>
-                  )}
-                  <button 
-                    onClick={onLogout}
-                    className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
-                  >
-                    🚪 تسجيل الخروج
-                  </button>
-                </div>
-              ) : (
-                <div className={`border-t pt-4 mt-4 ${isScrolled ? 'border-yellow-400/30' : 'border-amber-400/30'}`}>
-                  <button 
-                    onClick={onLogin}
-                    className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl mb-3 hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
-                  >
-                    🔑 تسجيل الدخول
-                  </button>
-                  <button 
-                    onClick={() => {
-                      navigate('/register')
-                      setIsMenuOpen(false)
-                    }}
-                    className={`w-full text-right transition-all duration-300 py-3 px-4 rounded-xl hover-lift ${isScrolled ? 'text-yellow-200 hover:bg-yellow-500/40' : 'text-amber-100 hover:bg-amber-800/40'}`}
-                  >
-                    📝 التسجيل
-                  </button>
-                </div>
-              )}
-            </div>
-          </nav>
-        )}
-      </div>
-    </header>
-  )
-}
-
-// Hero Section with Aurora UI
-function HeroSection({ scrollToSection }) {
-  return (
-    <section className="aurora-bg text-white py-32 relative overflow-hidden particles" dir="rtl">
-      {/* Aurora Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-20 text-8xl float">📚</div>
-        <div className="absolute top-40 right-40 text-6xl float" style={{animationDelay: '2s'}}>✨</div>
-        <div className="absolute bottom-40 left-40 text-7xl float" style={{animationDelay: '4s'}}>🌟</div>
-        <div className="absolute bottom-20 right-20 text-5xl float" style={{animationDelay: '6s'}}>📖</div>
-        <div className="absolute top-1/2 left-1/4 text-6xl float" style={{animationDelay: '1s'}}>🎯</div>
-        <div className="absolute top-1/3 right-1/4 text-5xl float" style={{animationDelay: '3s'}}>💎</div>
-      </div>
-      
-      <div className="container mx-auto px-4 text-center relative z-10">
-        <div className="mb-16">
-          {/* Main Title with Gradient Text */}
-          <h1 className="text-6xl md:text-8xl font-extrabold mb-8 gradient-text drop-shadow-2xl">
-            اقْرأ أكثر. تطوّر أسرع.
-          </h1>
-          
-          {/* Subtitle with Glassmorphism - Black & Gold Theme */}
-          <div className="glass-card inline-block px-8 py-4 rounded-2xl mb-6">
-            <p className="text-3xl md:text-4xl text-yellow-100 font-bold drop-shadow-lg">
-              آلاف الكتب العربية المختارة للأطفال واليافعين
-            </p>
-          </div>
-          
-          {/* Features with Neumorphism - Black & Gold Theme */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <div className="neumorphism-dark px-6 py-3 rounded-2xl">
-              <p className="text-lg md:text-xl text-yellow-200 font-semibold">
-                🚚 شحن سريع
-              </p>
-            </div>
-            <div className="neumorphism-dark px-6 py-3 rounded-2xl">
-              <p className="text-lg md:text-xl text-yellow-200 font-semibold">
-                💯 ضمان الأصالة
-              </p>
-            </div>
-            <div className="neumorphism-dark px-6 py-3 rounded-2xl">
-              <p className="text-lg md:text-xl text-yellow-200 font-semibold">
-                💸 أسعار منافسة
-              </p>
-            </div>
-            <div className="neumorphism-dark px-6 py-3 rounded-2xl">
-              <p className="text-lg md:text-xl text-yellow-200 font-semibold">
-                🤝 دعم فوري
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        {/* CTA Buttons with Hover Effects - Black & Gold Theme */}
-        <div className="flex flex-wrap justify-center gap-6 md:gap-8">
-          <Button 
-            size="lg" 
-            className="text-2xl px-10 md:px-12 py-6 neumorphism text-black hover:bg-yellow-400 font-extrabold rounded-3xl shadow-2xl transition-all duration-500 hover-lift hover-glow"
-            onClick={() => navigate('/books')}
-          >
-            <Sparkles className="h-6 w-6 ml-3" />
-            📚 تصفح الكتب الآن
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="text-2xl px-10 md:px-12 py-6 glass-card text-yellow-100 border border-yellow-300 hover:bg-yellow-300/40 hover:text-yellow-900 font-extrabold rounded-3xl shadow-2xl transition-all duration-500 hover-lift"
-            onClick={() => scrollToSection && scrollToSection('new-releases')}
-          >
-            <Zap className="h-6 w-6 ml-3" />
-            🆕 اكتشف الإصدارات الجديدة
-          </Button>
-          <Button 
-            size="lg"
-            variant="outline"
-            className="text-2xl px-10 md:px-12 py-6 glass-card text-white hover:bg-white/20 border-2 border-yellow-400 font-extrabold rounded-3xl shadow-2xl transition-all duration-500 hover-lift hover-glow"
-            onClick={() => window.open('https://wa.me/962785462983?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B3%D8%A7%D8%B9%D8%AF%D8%A9%20%D9%81%D9%8A%20%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1%20%D9%83%D8%AA%D8%A8%20%D9%85%D9%86%20ROYAL%20STUDY', '_blank')}
-          >
-            <MessageCircle className="h-6 w-6 ml-3" />
-            💬 تواصل عبر واتساب
-          </Button>
-        </div>
-
-        {/* Stats Section with Glassmorphism - Black & Gold Theme */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-          <div className="glass-card rounded-2xl px-6 py-8 text-center hover-lift">
-            <div className="text-4xl mb-2">📚</div>
-            <div className="text-3xl font-bold text-yellow-300 mb-2">1000+</div>
-            <div className="text-yellow-200 font-semibold">كتاب متنوع</div>
-          </div>
-          <div className="glass-card rounded-2xl px-6 py-8 text-center hover-lift">
-            <div className="text-4xl mb-2">👥</div>
-            <div className="text-3xl font-bold text-yellow-300 mb-2">500+</div>
-            <div className="text-yellow-200 font-semibold">عميل سعيد</div>
-          </div>
-          <div className="glass-card rounded-2xl px-6 py-8 text-center hover-lift">
-            <div className="text-4xl mb-2">⭐</div>
-            <div className="text-3xl font-bold text-yellow-300 mb-2">4.9</div>
-            <div className="text-yellow-200 font-semibold">تقييم ممتاز</div>
-          </div>
-          <div className="glass-card rounded-2xl px-6 py-8 text-center hover-lift">
-            <div className="text-4xl mb-2">🚚</div>
-            <div className="text-3xl font-bold text-yellow-300 mb-2">24h</div>
-            <div className="text-yellow-200 font-semibold">توصيل سريع</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // Features Section with Neumorphism - Black & Gold Theme
 function FeaturesSection() {
@@ -636,7 +275,7 @@ function BooksGrid({ books, loading, onWhatsAppInquiry }) {
 
 
 
-// Login Modal Component with Glassmorphism
+// Login Modal Component with Royal Black & Gold Theme
 function LoginModal({ isOpen, onClose, onLogin }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -664,61 +303,98 @@ function LoginModal({ isOpen, onClose, onLogin }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md glass-card" dir="rtl">
-        <DialogHeader>
-          <DialogTitle className="text-right text-2xl font-bold gradient-text">🔑 تسجيل الدخول</DialogTitle>
-          <DialogDescription className="text-right text-gray-700">
+      <DialogContent className="max-w-md bg-royal-black border-2 border-royal-gold/30 shadow-2xl" dir="rtl">
+        <DialogHeader className="text-center mb-6">
+          <div className="w-16 h-16 bg-gradient-to-br from-royal-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg overflow-hidden">
+            <img 
+              src="/royal-study-logo.png" 
+              alt="ROYAL STUDY Logo" 
+              className="w-12 h-12 object-contain"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <span className="text-3xl hidden">🔑</span>
+          </div>
+          <DialogTitle className="text-2xl font-black text-royal-gold text-center">
+            تسجيل الدخول
+          </DialogTitle>
+          <DialogDescription className="text-royal-beige/80 text-center mt-2">
             أدخل بياناتك للوصول إلى حسابك
           </DialogDescription>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="neumorphism-inset px-4 py-3 rounded-xl text-red-700 text-right">
-              {error}
+            <div className="bg-red-500/20 border border-red-500/50 px-4 py-3 rounded-xl text-red-300 text-right">
+              <div className="flex items-center space-x-2 space-x-reverse">
+                <span className="text-lg">⚠️</span>
+                <span>{error}</span>
+              </div>
             </div>
           )}
           
           <div className="space-y-3">
-            <Label htmlFor="email" className="text-right block text-gray-800 font-semibold">البريد الإلكتروني</Label>
+            <Label htmlFor="email" className="text-right block text-royal-beige font-bold text-sm">
+              البريد الإلكتروني
+            </Label>
             <Input
               id="email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="أدخل بريدك الإلكتروني"
-              className="text-right neumorphism-inset border-0 focus:ring-2 focus:ring-yellow-400"
+              className="text-right bg-royal-black/50 border-2 border-royal-gold/30 text-royal-beige placeholder:text-royal-beige/50 focus:border-royal-gold focus:ring-2 focus:ring-royal-gold/20 rounded-xl transition-all duration-300"
               required
             />
           </div>
           
           <div className="space-y-3">
-            <Label htmlFor="password" className="text-right block text-gray-800 font-semibold">كلمة المرور</Label>
+            <Label htmlFor="password" className="text-right block text-royal-beige font-bold text-sm">
+              كلمة المرور
+            </Label>
             <Input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="أدخل كلمة المرور"
-              className="text-right neumorphism-inset border-0 focus:ring-2 focus:ring-yellow-400"
+              className="text-right bg-royal-black/50 border-2 border-royal-gold/30 text-royal-beige placeholder:text-royal-beige/50 focus:border-royal-gold focus:ring-2 focus:ring-royal-gold/20 rounded-xl transition-all duration-300"
               required
             />
           </div>
           
           <div className="flex gap-4 pt-6">
-            <Button type="button" variant="outline" onClick={onClose} className="flex-1 neumorphism text-black hover:bg-yellow-400 rounded-xl transition-all duration-300">
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={onClose} 
+              className="flex-1 border-2 border-royal-gold/50 text-royal-gold hover:bg-royal-gold hover:text-royal-black font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
               إلغاء
             </Button>
-            <Button type="submit" disabled={isLoading} className="flex-1 neumorphism text-black hover:bg-yellow-400 rounded-xl transition-all duration-300">
-              {isLoading ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول'}
+            <Button 
+              type="submit" 
+              disabled={isLoading} 
+              className="flex-1 bg-gradient-to-r from-royal-gold to-yellow-500 hover:from-yellow-500 hover:to-royal-gold text-royal-black font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? (
+                <div className="flex items-center space-x-2 space-x-reverse">
+                  <div className="w-4 h-4 border-2 border-royal-black border-t-transparent rounded-full animate-spin"></div>
+                  <span>جاري تسجيل الدخول...</span>
+                </div>
+              ) : (
+                'تسجيل الدخول'
+              )}
             </Button>
           </div>
         </form>
         
-        <div className="text-center text-sm text-gray-600 mt-6 p-4 glass-card rounded-xl">
-          <p className="font-semibold mb-2">للاختبار، استخدم:</p>
-          <p>البريد الإلكتروني: admin@library.com</p>
-          <p>كلمة المرور: Admin123!</p>
+        <div className="text-center text-sm text-royal-beige/70 mt-6 p-4 bg-royal-black/30 border border-royal-gold/20 rounded-xl">
+          <p className="font-bold mb-2 text-royal-gold">للاختبار، استخدم:</p>
+          <p className="text-xs">البريد الإلكتروني: admin@library.com</p>
+          <p className="text-xs">كلمة المرور: Admin123!</p>
         </div>
       </DialogContent>
     </Dialog>
@@ -1141,20 +817,16 @@ ${customerData.customerName}`
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
-      <Header
-        onSearch={handleGlobalSearch}
-        currentUser={currentUser}
+      <Header 
         onLogin={() => setShowLoginModal(true)}
-        onLogout={handleLogout}
-        onOpenAdmin={handleOpenAdmin}
-        scrollToSection={scrollToSection}
+        onRegister={() => navigate('/register')}
       />
       
       <Routes>
         <Route path="/" element={
           <>
             <main>
-              <HeroSection scrollToSection={scrollToSection} />
+              <Hero />
               
               {/* Features Section */}
               <FeaturesSection />
@@ -1310,6 +982,20 @@ ${customerData.customerName}`
         <Route path="/my-attempts" element={
           <>
             <MyAttemptsPage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/calendar" element={
+          <>
+            <CalendarPage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/admin/calendar" element={
+          <>
+            <AdminCalendarPage />
             <Footer />
           </>
         } />
