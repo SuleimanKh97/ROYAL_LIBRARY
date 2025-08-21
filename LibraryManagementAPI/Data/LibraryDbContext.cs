@@ -24,6 +24,9 @@ namespace LibraryManagementAPI.Data
         public DbSet<QuestionOption> QuestionOptions { get; set; }
         public DbSet<QuizAttempt> QuizAttempts { get; set; }
         public DbSet<AttemptAnswer> AttemptAnswers { get; set; }
+        public DbSet<StudyMaterial> StudyMaterials { get; set; }
+        public DbSet<StudyTip> StudyTips { get; set; }
+        public DbSet<StudySchedule> StudySchedules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -618,6 +621,71 @@ namespace LibraryManagementAPI.Data
                 new QuestionOption { Id = 31, QuestionId = 14, OptionText = "Cu", OptionTextArabic = "Cu", IsCorrect = false, OrderIndex = 3, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow },
                 new QuestionOption { Id = 32, QuestionId = 14, OptionText = "Fe", OptionTextArabic = "Fe", IsCorrect = false, OrderIndex = 4, CreatedAt = DateTime.UtcNow, UpdatedAt = DateTime.UtcNow }
             );
+
+            // Configure StudyMaterial entity
+            modelBuilder.Entity<StudyMaterial>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.TitleArabic).HasMaxLength(200);
+                entity.Property(e => e.Category).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.Subject).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.Teacher).HasMaxLength(100);
+                entity.Property(e => e.Status).HasMaxLength(50).HasDefaultValue("متوفر");
+                entity.Property(e => e.Delivery).HasMaxLength(100).HasDefaultValue("PDF / طباعة");
+                entity.Property(e => e.Rating).HasColumnType("decimal(3,2)").HasDefaultValue(0.0m);
+                entity.Property(e => e.Duration).HasMaxLength(50);
+                entity.Property(e => e.Price).HasColumnType("decimal(10,2)").HasDefaultValue(0.0m);
+                entity.Property(e => e.Downloads).HasDefaultValue(0);
+                entity.Property(e => e.IsActive).HasDefaultValue(true);
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+
+                entity.HasIndex(e => e.Category);
+                entity.HasIndex(e => e.Subject);
+                entity.HasIndex(e => e.IsActive);
+            });
+
+            // Configure StudyTip entity
+            modelBuilder.Entity<StudyTip>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Category).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(200);
+                entity.Property(e => e.TitleArabic).HasMaxLength(200);
+                entity.Property(e => e.Grade).HasMaxLength(50);
+                entity.Property(e => e.Subject).HasMaxLength(50);
+                entity.Property(e => e.OrderIndex).HasDefaultValue(0);
+                entity.Property(e => e.IsActive).HasDefaultValue(true);
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+
+                entity.HasIndex(e => e.Category);
+                entity.HasIndex(e => e.Grade);
+                entity.HasIndex(e => e.Subject);
+                entity.HasIndex(e => e.IsActive);
+            });
+
+            // Configure StudySchedule entity
+            modelBuilder.Entity<StudySchedule>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Type).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.Day).IsRequired().HasMaxLength(50);
+                entity.Property(e => e.Title).HasMaxLength(200);
+                entity.Property(e => e.TitleArabic).HasMaxLength(200);
+                entity.Property(e => e.Grade).HasMaxLength(50);
+                entity.Property(e => e.Focus).HasMaxLength(200);
+                entity.Property(e => e.FocusArabic).HasMaxLength(200);
+                entity.Property(e => e.OrderIndex).HasDefaultValue(0);
+                entity.Property(e => e.IsActive).HasDefaultValue(true);
+                entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+                entity.Property(e => e.UpdatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+
+                entity.HasIndex(e => e.Type);
+                entity.HasIndex(e => e.Grade);
+                entity.HasIndex(e => e.IsActive);
+            });
         }
     }
 }

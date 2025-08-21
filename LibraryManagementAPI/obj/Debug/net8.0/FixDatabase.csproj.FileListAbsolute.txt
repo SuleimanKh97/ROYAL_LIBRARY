@@ -1,0 +1,6 @@
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\FixDatabase.csproj.AssemblyReference.cache
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\FixDatabase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\FixDatabase.AssemblyInfoInputs.cache
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\FixDatabase.AssemblyInfo.cs
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\FixDatabase.csproj.CoreCompileInputs.cache
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\FixDatabase.sourcelink.json

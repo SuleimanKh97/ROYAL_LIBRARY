@@ -10,6 +10,7 @@ import { Search, Book, Users, Star, MessageCircle, Phone, Mail, MapPin, Heart, S
 import AdminPanel from './components/AdminPanel.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
+import Footer from './components/Footer.jsx'
 import BooksPage from './pages/BooksPage.jsx'
 import AuthorsPage from './pages/AuthorsPage.jsx'
 import CategoriesPage from './pages/CategoriesPage.jsx'
@@ -21,6 +22,8 @@ import QuizResultsPage from './pages/QuizResultsPage.jsx'
 import MyAttemptsPage from './pages/MyAttemptsPage.jsx'
 import CalendarPage from './pages/CalendarPage.jsx'
 import AdminCalendarPage from './pages/AdminCalendarPage.jsx'
+import SuccessGuidePage from './pages/SuccessGuidePage.jsx'
+import StudyTipsPage from './pages/StudyTipsPage.jsx'
 import { showSuccess, showError } from './lib/sweetAlert.js'
 
 import apiService from './lib/api.js'
@@ -73,21 +76,21 @@ function FeaturesSection() {
   ]
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100" dir="rtl">
+    <section className="py-24 bg-gradient-to-br from-[#EBB026] via-[#F4C430] to-[#FFD700]" dir="rtl">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold gradient-text mb-6">✨ مميزاتنا الفريدة</h2>
-          <p className="text-2xl text-gray-800 font-medium">🎯 نقدم لك تجربة شراء استثنائية</p>
+          <h2 className="text-5xl font-bold text-royal-black mb-6">✨ مميزاتنا الفريدة</h2>
+          <p className="text-2xl text-royal-black/90 font-medium">🎯 نقدم لك تجربة شراء استثنائية</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="neumorphism p-8 rounded-3xl hover-lift transition-all duration-500">
-              <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-2xl flex items-center justify-center text-black mb-6 mx-auto`}>
+            <div key={index} className="bg-white/20 backdrop-blur-sm p-8 rounded-3xl hover:bg-white/30 transition-all duration-500 border border-royal-black/20">
+              <div className={`w-16 h-16 bg-gradient-to-br from-royal-black to-gray-800 rounded-2xl flex items-center justify-center text-white mb-6 mx-auto`}>
                 {feature.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">{feature.title}</h3>
-              <p className="text-gray-700 text-center leading-relaxed">{feature.description}</p>
+              <h3 className="text-2xl font-bold text-royal-black mb-4 text-center">{feature.title}</h3>
+              <p className="text-royal-black/80 text-center leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
@@ -289,7 +292,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
 
     try {
       const response = await apiService.login(email, password)
-      onLogin(response.user)
+      onLogin(response.user, response.token)
       onClose()
       setEmail('')
       setPassword('')
@@ -305,7 +308,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-md bg-royal-black border-2 border-royal-gold/30 shadow-2xl" dir="rtl">
         <DialogHeader className="text-center mb-6">
-          <div className="w-16 h-16 bg-gradient-to-br from-royal-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg overflow-hidden">
+          <div className="w-16 h-16 bg-gradient-to-br from-royal-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg overflow-hidden">
             <img 
               src="/royal-study-logo.png" 
               alt="ROYAL STUDY Logo" 
@@ -315,7 +318,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
                 e.target.nextSibling.style.display = 'flex';
               }}
             />
-            <span className="text-3xl hidden">🔑</span>
+            <span className="text-3xl text-royal-gold hidden">🔑</span>
           </div>
           <DialogTitle className="text-2xl font-black text-royal-gold text-center">
             تسجيل الدخول
@@ -401,150 +404,7 @@ function LoginModal({ isOpen, onClose, onLogin }) {
   )
 }
 
-// Footer Component with Aurora UI and Glassmorphism
-function Footer() {
-  return (
-    <footer id="contact" className="aurora-bg text-white py-20 relative overflow-hidden" dir="rtl">
-      {/* Aurora Background Elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute bottom-10 left-10 text-6xl float">📚</div>
-        <div className="absolute bottom-20 right-20 text-5xl float" style={{animationDelay: '2s'}}>✨</div>
-        <div className="absolute top-20 left-1/4 text-4xl float" style={{animationDelay: '4s'}}>🌟</div>
-        <div className="absolute top-10 right-1/4 text-5xl float" style={{animationDelay: '6s'}}>📖</div>
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Library Info with Glassmorphism */}
-          <div className="text-right">
-            <div className="glass-card p-6 rounded-2xl hover-lift transition-all duration-500">
-              <div className="flex items-center space-x-3 space-x-reverse mb-6">
-                <div className="neumorphism p-3 rounded-xl">
-                  <Book className="h-8 w-8 text-gradient-to-r from-yellow-500 to-yellow-600" />
-                </div>
-                <h3 className="text-2xl font-bold gradient-text">👑 ROYAL STUDY</h3>
-              </div>
-              <p className="text-yellow-200 mb-4 text-lg font-medium">
-                📚 مكتبة إربد الأولى للكتب العربية
-              </p>
-              <p className="text-yellow-300 text-sm">
-                نقدم أفضل الكتب العربية للأطفال واليافعين مع خدمة استثنائية
-              </p>
-            </div>
-          </div>
 
-          {/* Services with Neumorphism */}
-          <div className="text-right">
-            <div className="neumorphism-dark p-6 rounded-2xl hover-lift transition-all duration-500">
-              <h4 className="text-xl font-bold mb-6 text-yellow-300">🎯 خدماتنا</h4>
-              <ul className="space-y-4 text-yellow-200">
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">📖</span>
-                  <span className="font-medium text-lg">بيع الكتب</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">🚚</span>
-                  <span className="font-medium text-lg">التوصيل السريع</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">💡</span>
-                  <span className="font-medium text-lg">استشارات الكتب</span>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">📋</span>
-                  <span className="font-medium text-lg">الطلب المسبق</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Quick Links with Glassmorphism */}
-          <div className="text-right">
-            <div className="glass-card p-6 rounded-2xl hover-lift transition-all duration-500">
-              <h4 className="text-xl font-bold mb-6 text-yellow-300">🔗 روابط سريعة</h4>
-              <ul className="space-y-4 text-yellow-200">
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">⭐</span>
-                  <a href="#featured-books" className="font-medium text-lg">الكتب المميزة</a>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">🆕</span>
-                  <a href="#new-releases" className="font-medium text-lg">الإصدارات الجديدة</a>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">📚</span>
-                  <a href="#all-books" className="font-medium text-lg">جميع الكتب</a>
-                </li>
-                <li className="flex items-center space-x-3 space-x-reverse hover:text-yellow-400 transition-colors">
-                  <span className="text-2xl">✍️</span>
-                  <a href="#" className="font-medium text-lg">المؤلفون</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact with Neumorphism */}
-          <div className="text-right">
-            <div className="neumorphism-dark p-6 rounded-2xl hover-lift transition-all duration-500">
-              <h4 className="text-xl font-bold mb-6 text-yellow-300">📞 تواصل معنا</h4>
-              <div className="space-y-4 text-yellow-200">
-                <div className="flex items-center space-x-3 space-x-reverse">
-                  <div className="neumorphism p-2 rounded-xl">
-                    <Phone className="h-5 w-5 text-yellow-400" />
-                  </div>
-                  <span className="font-medium text-lg">📱 +962785462983</span>
-                </div>
-                <div className="flex items-center space-x-3 space-x-reverse">
-                  <div className="flex items-center space-x-3 space-x-reverse">
-                    <div className="neumorphism p-2 rounded-xl">
-                      <Mail className="h-5 w-5 text-yellow-400" />
-                    </div>
-                    <span className="font-medium text-lg">✉️ info@royalstudy.com</span>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3 space-x-reverse">
-                  <div className="neumorphism p-2 rounded-xl">
-                    <MapPin className="h-5 w-5 text-yellow-400" />
-                  </div>
-                  <span className="font-medium text-lg">🏢 إربد، الأردن</span>
-                </div>
-                <div className="flex items-center space-x-3 space-x-reverse">
-                  <div className="neumorphism p-2 rounded-xl">
-                    <MessageCircle className="h-5 w-5 text-yellow-400" />
-                  </div>
-                  <span className="font-medium text-lg">💬 واتساب 24/7</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section with Glassmorphism - Black & Gold Theme */}
-        <div className="glass-card p-8 rounded-2xl text-center">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-yellow-200 text-lg font-medium">
-              &copy; 2024 👑 ROYAL STUDY. جميع الحقوق محفوظة. ❤️
-            </p>
-            <div className="flex items-center space-x-4 space-x-reverse">
-              <span className="text-yellow-300 font-semibold">تابعنا على:</span>
-              <div className="flex space-x-3 space-x-reverse">
-                <div className="neumorphism p-2 rounded-xl hover-lift cursor-pointer">
-                  <span className="text-2xl">📱</span>
-                </div>
-                <div className="neumorphism p-2 rounded-xl hover-lift cursor-pointer">
-                  <span className="text-2xl">📘</span>
-                </div>
-                <div className="neumorphism p-2 rounded-xl hover-lift cursor-pointer">
-                  <span className="text-2xl">📷</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
-}
 
 // Main App Component
 function App() {
@@ -564,7 +424,18 @@ function App() {
 
   useEffect(() => {
     loadInitialData()
-    setCurrentUser(apiService.getCurrentUser())
+    // Load user from localStorage on app start
+    const savedUser = localStorage.getItem('user')
+    if (savedUser) {
+      try {
+        setCurrentUser(JSON.parse(savedUser))
+      } catch (error) {
+        console.error('Error parsing saved user:', error)
+        localStorage.removeItem('user')
+      }
+    } else {
+      setCurrentUser(apiService.getCurrentUser())
+    }
   }, [])
 
   // Get current page from location
@@ -675,6 +546,9 @@ function App() {
     } finally {
       setCurrentUser(null)
       setShowAdminPanel(false)
+      // Clear localStorage
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
     }
   }
 
@@ -816,10 +690,13 @@ ${customerData.customerName}`
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200">
+    <div className="min-h-screen">
       <Header 
         onLogin={() => setShowLoginModal(true)}
         onRegister={() => navigate('/register')}
+        currentUser={currentUser}
+        onLogout={handleLogout}
+        onOpenAdmin={() => setShowAdminPanel(true)}
       />
       
       <Routes>
@@ -831,76 +708,11 @@ ${customerData.customerName}`
               {/* Features Section */}
               <FeaturesSection />
               
-              {/* Featured Books Section with Aurora UI */}
-              {featuredBooks.length > 0 && (
-                <section id="featured-books" className="py-24 aurora-bg text-white relative overflow-hidden" dir="rtl">
-                  {/* Aurora Background Elements */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-20 left-20 text-6xl float">⭐</div>
-                    <div className="absolute bottom-20 right-20 text-5xl float" style={{animationDelay: '3s'}}>📚</div>
-                    <div className="absolute top-1/2 right-1/4 text-4xl float" style={{animationDelay: '6s'}}>✨</div>
-                  </div>
-                  
-                  <div className="container mx-auto px-4 relative z-10">
-                    <div className="text-center mb-16">
-                      <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">⭐ الكتب المميزة</h2>
-                      <div className="glass-card inline-block px-8 py-4 rounded-2xl">
-                        <p className="text-3xl text-yellow-100 font-bold drop-shadow-lg">📚 اكتشف أفضل الكتب المختارة خصيصاً للأطفال</p>
-                      </div>
-                    </div>
-                    <BooksGrid
-                      books={featuredBooks}
-                      loading={false}
-                      onWhatsAppInquiry={handleWhatsAppInquiry}
-                    />
-                  </div>
-                </section>
-              )}
 
-              {/* New Releases Section with Morphing Background */}
-              {newReleases.length > 0 && (
-                <section id="new-releases" className="py-24 morphing-bg text-white relative overflow-hidden" dir="rtl">
-                  {/* Particle Effect */}
-                  <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-10 right-10 text-5xl float">🆕</div>
-                    <div className="absolute bottom-10 left-10 text-6xl float" style={{animationDelay: '2s'}}>🎉</div>
-                    <div className="absolute top-1/3 left-1/3 text-4xl float" style={{animationDelay: '4s'}}>📖</div>
-                  </div>
-                  
-                  <div className="container mx-auto px-4 relative z-10">
-                    <div className="text-center mb-16">
-                      <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">🆕 الإصدارات الجديدة</h2>
-                      <div className="glass-card inline-block px-8 py-4 rounded-2xl">
-                        <p className="text-3xl text-white font-bold drop-shadow-lg">🎉 آخر الكتب المثيرة التي وصلت إلى مكتبتنا</p>
-                      </div>
-                    </div>
-                    <BooksGrid
-                      books={newReleases}
-                      loading={false}
-                      onWhatsAppInquiry={handleWhatsAppInquiry}
-                    />
-                  </div>
-                </section>
-              )}
 
-              {/* All Books Section with Neumorphism - Black & Gold Theme */}
-              <section id="all-books" className="py-24 bg-gradient-to-br from-gray-50 to-gray-100" dir="rtl">
-                <div className="container mx-auto px-4">
-                  <div className="text-center mb-16">
-                    <div className="neumorphism p-8 rounded-3xl inline-block">
-                      <h2 className="text-6xl font-bold gradient-text mb-6 drop-shadow-2xl">
-                        {searchTerm ? `🔍 نتائج البحث عن: "${searchTerm}"` : '📚 جميع الكتب'}
-                      </h2>
-                      <p className="text-3xl text-gray-800 font-bold">📖 تصفح مجموعتنا الكاملة من الكتب الرائعة</p>
-                    </div>
-                  </div>
-                  <BooksGrid
-                    books={books}
-                    loading={loading}
-                    onWhatsAppInquiry={handleWhatsAppInquiry}
-                  />
-                </div>
-              </section>
+
+
+
             </main>
             <Footer />
           </>
@@ -996,6 +808,20 @@ ${customerData.customerName}`
         <Route path="/admin/calendar" element={
           <>
             <AdminCalendarPage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/success-guide" element={
+          <>
+            <SuccessGuidePage />
+            <Footer />
+          </>
+        } />
+        
+        <Route path="/study-tips" element={
+          <>
+            <StudyTipsPage />
             <Footer />
           </>
         } />

@@ -1,3 +1,102 @@
+/* Royal Library Custom Colors */
+:root {
+  --royal-gold: #f59e0b;
+  --royal-gold-dark: #d97706;
+  --royal-gold-light: #fde68a;
+  --royal-black: #1f2937;
+  --royal-beige: #fef3c7;
+  --royal-dark-beige: #fde68a;
+}
+
+/* Royal Library Custom Classes */
+.royal-gradient {
+  background: linear-gradient(135deg, var(--royal-black), #374151);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--royal-gold), var(--royal-gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.neumorphism {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
+}
+
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.morphing-bg {
+  background: linear-gradient(-45deg, var(--royal-gold), var(--royal-gold-dark), #92400e, var(--royal-gold));
+  background-size: 400% 400%;
+  animation: morphing 15s ease infinite;
+}
+
+@keyframes morphing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Enhanced Hover Effects */
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+       .hover-glow:hover {
+         box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+         transition: box-shadow 0.3s ease;
+       }
+
+       /* Gold Shimmer Effect */
+       .gold-shimmer {
+         background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+         background-size: 200% 100%;
+         animation: shimmer 2s infinite;
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-clip: text;
+       }
+
+       @keyframes shimmer {
+         0% { background-position: -200% 0; }
+         100% { background-position: 200% 0; }
+       }
+
 /* Custom Sweet Alert Styles */
 .swal2-popup {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

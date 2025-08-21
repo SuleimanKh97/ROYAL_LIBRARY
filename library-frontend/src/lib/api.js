@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://witty-apples-relax.loca.lt/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5035/api';
 
 // Debug: Log the API base URL
 console.log('🔧 API Base URL:', API_BASE_URL);
@@ -599,6 +599,146 @@ class ApiService {
         // Don't set Content-Type for FormData, let browser set it
       }
     });
+  }
+
+  // Study Materials Methods
+  async getStudyMaterials(filters = {}) {
+    const queryParams = new URLSearchParams();
+    if (filters.category) queryParams.append('category', filters.category);
+    if (filters.subject) queryParams.append('subject', filters.subject);
+    if (filters.search) queryParams.append('search', filters.search);
+    if (filters.isActive !== undefined) queryParams.append('isActive', filters.isActive);
+    if (filters.page) queryParams.append('page', filters.page);
+    if (filters.pageSize) queryParams.append('pageSize', filters.pageSize);
+    
+    return await this.apiCall(`/StudyMaterials?${queryParams.toString()}`);
+  }
+
+  async getStudyMaterialById(id) {
+    return await this.apiCall(`/StudyMaterials/${id}`);
+  }
+
+  async createStudyMaterial(materialData) {
+    return await this.apiCall('/StudyMaterials', {
+      method: 'POST',
+      body: JSON.stringify(materialData)
+    });
+  }
+
+  async updateStudyMaterial(id, materialData) {
+    return await this.apiCall(`/StudyMaterials/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(materialData)
+    });
+  }
+
+  async deleteStudyMaterial(id) {
+    return await this.apiCall(`/StudyMaterials/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
+  async getStudyMaterialCategories() {
+    return await this.apiCall('/StudyMaterials/categories');
+  }
+
+  async getStudyMaterialSubjects() {
+    return await this.apiCall('/StudyMaterials/subjects');
+  }
+
+  // Study Tips Methods
+  async getStudyTips(filters = {}) {
+    const queryParams = new URLSearchParams();
+    if (filters.category) queryParams.append('category', filters.category);
+    if (filters.grade) queryParams.append('grade', filters.grade);
+    if (filters.subject) queryParams.append('subject', filters.subject);
+    if (filters.search) queryParams.append('search', filters.search);
+    if (filters.isActive !== undefined) queryParams.append('isActive', filters.isActive);
+    if (filters.page) queryParams.append('page', filters.page);
+    if (filters.pageSize) queryParams.append('pageSize', filters.pageSize);
+    
+    return await this.apiCall(`/StudyTips?${queryParams.toString()}`);
+  }
+
+  async getStudyTipById(id) {
+    return await this.apiCall(`/StudyTips/${id}`);
+  }
+
+  async createStudyTip(tipData) {
+    return await this.apiCall('/StudyTips', {
+      method: 'POST',
+      body: JSON.stringify(tipData)
+    });
+  }
+
+  async updateStudyTip(id, tipData) {
+    return await this.apiCall(`/StudyTips/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(tipData)
+    });
+  }
+
+  async deleteStudyTip(id) {
+    return await this.apiCall(`/StudyTips/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
+  async getStudyTipCategories() {
+    return await this.apiCall('/StudyTips/categories');
+  }
+
+  async getStudyTipGrades() {
+    return await this.apiCall('/StudyTips/grades');
+  }
+
+  async getStudyTipSubjects() {
+    return await this.apiCall('/StudyTips/subjects');
+  }
+
+  // Study Schedules Methods
+  async getStudySchedules(filters = {}) {
+    const queryParams = new URLSearchParams();
+    if (filters.type) queryParams.append('type', filters.type);
+    if (filters.grade) queryParams.append('grade', filters.grade);
+    if (filters.search) queryParams.append('search', filters.search);
+    if (filters.isActive !== undefined) queryParams.append('isActive', filters.isActive);
+    if (filters.page) queryParams.append('page', filters.page);
+    if (filters.pageSize) queryParams.append('pageSize', filters.pageSize);
+    
+    return await this.apiCall(`/StudySchedules?${queryParams.toString()}`);
+  }
+
+  async getStudyScheduleById(id) {
+    return await this.apiCall(`/StudySchedules/${id}`);
+  }
+
+  async createStudySchedule(scheduleData) {
+    return await this.apiCall('/StudySchedules', {
+      method: 'POST',
+      body: JSON.stringify(scheduleData)
+    });
+  }
+
+  async updateStudySchedule(id, scheduleData) {
+    return await this.apiCall(`/StudySchedules/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(scheduleData)
+    });
+  }
+
+  async deleteStudySchedule(id) {
+    return await this.apiCall(`/StudySchedules/${id}`, {
+      method: 'DELETE'
+    });
+  }
+
+  async getStudyScheduleTypes() {
+    return await this.apiCall('/StudySchedules/types');
+  }
+
+  async getStudyScheduleGrades() {
+    return await this.apiCall('/StudySchedules/grades');
   }
 }
 

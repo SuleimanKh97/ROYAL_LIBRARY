@@ -1,0 +1,6 @@
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\CreateTables.csproj.AssemblyReference.cache
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\CreateTables.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\CreateTables.AssemblyInfoInputs.cache
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\CreateTables.AssemblyInfo.cs
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\CreateTables.csproj.CoreCompileInputs.cache
+C:\Users\ENG.K\Documents\Main_Library v2 style2\final\ROYAL_LIBRARY\LibraryManagementAPI\obj\Debug\net8.0\CreateTables.sourcelink.json

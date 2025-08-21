@@ -40,6 +40,7 @@ import CategoriesManagement from './admin/CategoriesManagement.jsx'
 import PublishersManagement from './admin/PublishersManagement.jsx'
 import InquiriesManagement from './admin/InquiriesManagement.jsx'
 import QuizzesManagement from './admin/QuizzesManagement.jsx'
+import StudyMaterialsManagement from './admin/StudyMaterialsManagement.jsx'
 
 
 
@@ -128,7 +129,7 @@ export default function AdminPanel({ currentUser, onClose }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl shadow-lg ml-3">
+              <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl shadow-lg ml-4">
                 <img 
                   src="/royal-study-logo.png" 
                   alt="ROYAL STUDY Logo" 
@@ -138,11 +139,11 @@ export default function AdminPanel({ currentUser, onClose }) {
                     e.target.nextSibling.style.display = 'block';
                   }}
                 />
-                <Settings className="h-8 w-8 text-black hidden" />
+                <Settings className="h-8 w-8 text-royal-gold hidden" />
               </div>
-              <div>
-                <h1 className="text-2xl font-bold text-gray-900">لوحة التحكم</h1>
-                <p className="text-sm text-gray-600">إدارة ROYAL STUDY</p>
+              <div className="flex flex-col">
+                <h1 className="text-xl font-bold text-gray-900">لوحة التحكم</h1>
+                <p className="text-sm text-gray-600">إدارة المكتبة الملكية</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -161,13 +162,14 @@ export default function AdminPanel({ currentUser, onClose }) {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="grid w-full grid-cols-8">
             <TabsTrigger value="dashboard">لوحة المعلومات</TabsTrigger>
             <TabsTrigger value="books">الكتب</TabsTrigger>
             <TabsTrigger value="authors">المؤلفون</TabsTrigger>
             <TabsTrigger value="categories">التصنيفات</TabsTrigger>
             <TabsTrigger value="publishers">الناشرون</TabsTrigger>
             <TabsTrigger value="quizzes">الكويزات</TabsTrigger>
+            <TabsTrigger value="study-materials">المواد الدراسية</TabsTrigger>
             <TabsTrigger value="inquiries">الاستفسارات</TabsTrigger>
           </TabsList>
 
@@ -193,6 +195,10 @@ export default function AdminPanel({ currentUser, onClose }) {
 
           <TabsContent value="quizzes" className="space-y-6">
             <QuizzesManagement />
+          </TabsContent>
+
+          <TabsContent value="study-materials" className="space-y-6">
+            <StudyMaterialsManagement />
           </TabsContent>
 
           <TabsContent value="inquiries" className="space-y-6">

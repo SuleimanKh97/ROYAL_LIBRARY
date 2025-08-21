@@ -138,60 +138,60 @@ namespace LibraryManagementAPI.Migrations
                             Id = 1,
                             Biography = "Egyptian poet and playwright",
                             BiographyArabic = "شاعر وكاتب مسرحي مصري",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4702),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5322),
                             IsActive = true,
                             Name = "Ahmed Shawqi",
                             NameArabic = "أحمد شوقي",
                             Nationality = "Egyptian",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4702)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5322)
                         },
                         new
                         {
                             Id = 2,
                             Biography = "Egyptian writer and intellectual",
                             BiographyArabic = "كاتب ومفكر مصري",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4705),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5325),
                             IsActive = true,
                             Name = "Taha Hussein",
                             NameArabic = "طه حسين",
                             Nationality = "Egyptian",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4706)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5326)
                         },
                         new
                         {
                             Id = 3,
                             Biography = "Egyptian philosopher and writer",
                             BiographyArabic = "فيلسوف وكاتب مصري",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4708),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5328),
                             IsActive = true,
                             Name = "Zaki Naguib Mahmoud",
                             NameArabic = "زكي نجيب محمود",
                             Nationality = "Egyptian",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4708)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5328)
                         },
                         new
                         {
                             Id = 4,
                             Biography = "Nobel Prize-winning Egyptian writer",
                             BiographyArabic = "كاتب مصري حائز على جائزة نوبل",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4710),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5330),
                             IsActive = true,
                             Name = "Naguib Mahfouz",
                             NameArabic = "نجيب محفوظ",
                             Nationality = "Egyptian",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4711)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5331)
                         },
                         new
                         {
                             Id = 5,
                             Biography = "Lebanese-American writer and poet",
                             BiographyArabic = "كاتب وشاعر لبناني أمريكي",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4712),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5333),
                             IsActive = true,
                             Name = "Khalil Gibran",
                             NameArabic = "جبران خليل جبران",
                             Nationality = "Lebanese",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4713)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5333)
                         });
                 });
 
@@ -326,7 +326,7 @@ namespace LibraryManagementAPI.Migrations
                             Id = 1,
                             AuthorId = 5,
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5046),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5609),
                             Description = "A book of 26 prose poetry essays written in English by the Lebanese-American poet and writer Kahlil Gibran",
                             DescriptionArabic = "كتاب يحتوي على 26 مقالة شعرية نثرية كتبها الشاعر والكاتب اللبناني الأمريكي جبران خليل جبران",
                             ISBN = "978-0-394-71585-9",
@@ -342,7 +342,7 @@ namespace LibraryManagementAPI.Migrations
                             StockQuantity = 25,
                             Title = "The Prophet",
                             TitleArabic = "النبي",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5047),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5610),
                             ViewCount = 500
                         },
                         new
@@ -350,7 +350,7 @@ namespace LibraryManagementAPI.Migrations
                             Id = 2,
                             AuthorId = 2,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5053),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5617),
                             Description = "An autobiographical novel by Taha Hussein",
                             DescriptionArabic = "رواية سيرة ذاتية لطه حسين",
                             ISBN = "978-977-02-1234-5",
@@ -366,7 +366,7 @@ namespace LibraryManagementAPI.Migrations
                             StockQuantity = 15,
                             Title = "The Days",
                             TitleArabic = "الأيام",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5053),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5617),
                             ViewCount = 320
                         },
                         new
@@ -374,7 +374,7 @@ namespace LibraryManagementAPI.Migrations
                             Id = 3,
                             AuthorId = 3,
                             CategoryId = 6,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5062),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5621),
                             Description = "An introduction to the philosophy of science",
                             DescriptionArabic = "مقدمة في فلسفة العلوم",
                             ISBN = "978-977-09-5678-9",
@@ -390,7 +390,7 @@ namespace LibraryManagementAPI.Migrations
                             StockQuantity = 8,
                             Title = "Philosophy of Science",
                             TitleArabic = "فلسفة العلوم",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5062),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5622),
                             ViewCount = 180
                         },
                         new
@@ -398,7 +398,7 @@ namespace LibraryManagementAPI.Migrations
                             Id = 4,
                             AuthorId = 4,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5066),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5626),
                             Description = "A novel by Nobel Prize winner Naguib Mahfouz",
                             DescriptionArabic = "رواية للكاتب نجيب محفوظ الحائز على جائزة نوبل",
                             ISBN = "978-977-02-9012-3",
@@ -414,7 +414,7 @@ namespace LibraryManagementAPI.Migrations
                             StockQuantity = 12,
                             Title = "Children of Gebelawi",
                             TitleArabic = "أولاد حارتنا",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5067),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5626),
                             ViewCount = 450
                         },
                         new
@@ -422,7 +422,7 @@ namespace LibraryManagementAPI.Migrations
                             Id = 5,
                             AuthorId = 1,
                             CategoryId = 1,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5071),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5630),
                             Description = "Collection of poems by Ahmed Shawqi",
                             DescriptionArabic = "مجموعة شعرية لأحمد شوقي",
                             ISBN = "978-963-12-3456-7",
@@ -438,7 +438,7 @@ namespace LibraryManagementAPI.Migrations
                             StockQuantity = 20,
                             Title = "Poetry Collection",
                             TitleArabic = "ديوان شعر",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5071),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5631),
                             ViewCount = 250
                         });
                 });
@@ -604,74 +604,74 @@ namespace LibraryManagementAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4996),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5538),
                             Description = "Fiction and literature books",
                             DescriptionArabic = "كتب الأدب والرواية",
                             Icon = "fas fa-feather-alt",
                             IsActive = true,
                             Name = "Literature",
                             NameArabic = "الأدب والرواية",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4996)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5538)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5000),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5542),
                             Description = "Science and research books",
                             DescriptionArabic = "كتب العلوم والبحث",
                             Icon = "fas fa-flask",
                             IsActive = true,
                             Name = "Science",
                             NameArabic = "العلوم",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5000)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5543)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5002),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5544),
                             Description = "History and civilization books",
                             DescriptionArabic = "كتب التاريخ والحضارة",
                             Icon = "fas fa-landmark",
                             IsActive = true,
                             Name = "History",
                             NameArabic = "التاريخ",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5002)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5544)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5003),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5546),
                             Description = "Religious and Islamic studies",
                             DescriptionArabic = "الكتب الدينية والدراسات الإسلامية",
                             Icon = "fas fa-mosque",
                             IsActive = true,
                             Name = "Religion",
                             NameArabic = "الدين",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5003)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5546)
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5005),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5547),
                             Description = "Technology and programming books",
                             DescriptionArabic = "كتب التكنولوجيا والبرمجة",
                             Icon = "fas fa-laptop-code",
                             IsActive = true,
                             Name = "Technology",
                             NameArabic = "التكنولوجيا",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5005)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5548)
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5006),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5569),
                             Description = "Philosophy and thought books",
                             DescriptionArabic = "كتب الفلسفة والفكر",
                             Icon = "fas fa-brain",
                             IsActive = true,
                             Name = "Philosophy",
                             NameArabic = "الفلسفة",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5006)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5570)
                         });
                 });
 
@@ -733,52 +733,52 @@ namespace LibraryManagementAPI.Migrations
                         {
                             Id = 1,
                             Address = "Cairo, Egypt",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4963),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5503),
                             Email = "info@daralmaarif.com",
                             IsActive = true,
                             Name = "Dar Al-Ma'arif",
                             NameArabic = "دار المعارف",
                             Phone = "+20123456789",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4963),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5503),
                             Website = "www.daralmaarif.com"
                         },
                         new
                         {
                             Id = 2,
                             Address = "Cairo, Egypt",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4967),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5506),
                             Email = "info@shorouk.com",
                             IsActive = true,
                             Name = "Dar Al-Shorouk",
                             NameArabic = "دار الشروق",
                             Phone = "+20123456790",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4967),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5507),
                             Website = "www.shorouk.com"
                         },
                         new
                         {
                             Id = 3,
                             Address = "Beirut, Lebanon",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4969),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5509),
                             Email = "info@arabicbook.com",
                             IsActive = true,
                             Name = "Dar Al-Kitab Al-Arabi",
                             NameArabic = "دار الكتاب العربي",
                             Phone = "+96112345678",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4970),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5509),
                             Website = "www.arabicbook.com"
                         },
                         new
                         {
                             Id = 4,
                             Address = "Damascus, Syria",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4972),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5511),
                             Email = "info@alfikr.com",
                             IsActive = true,
                             Name = "Dar Al-Fikr",
                             NameArabic = "دار الفكر",
                             Phone = "+96312345678",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(4972),
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5512),
                             Website = "www.alfikr.com"
                         });
                 });
@@ -833,354 +833,354 @@ namespace LibraryManagementAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5302),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5850),
                             IsCorrect = true,
                             OptionText = "4",
                             OptionTextArabic = "4",
                             OrderIndex = 1,
                             QuestionId = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5303)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5850)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5305),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5853),
                             IsCorrect = false,
                             OptionText = "6",
                             OptionTextArabic = "6",
                             OrderIndex = 2,
                             QuestionId = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5306)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5853)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5307),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5855),
                             IsCorrect = false,
                             OptionText = "8",
                             OptionTextArabic = "8",
                             OrderIndex = 3,
                             QuestionId = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5308)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5855)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5310),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5857),
                             IsCorrect = false,
                             OptionText = "10",
                             OptionTextArabic = "10",
                             OrderIndex = 4,
                             QuestionId = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5310)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5857)
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5312),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5859),
                             IsCorrect = true,
                             OptionText = "5",
                             OptionTextArabic = "5",
                             OrderIndex = 1,
                             QuestionId = 2,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5312)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5859)
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5314),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5861),
                             IsCorrect = false,
                             OptionText = "3",
                             OptionTextArabic = "3",
                             OrderIndex = 2,
                             QuestionId = 2,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5314)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5861)
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5316),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5863),
                             IsCorrect = false,
                             OptionText = "7",
                             OptionTextArabic = "7",
                             OrderIndex = 3,
                             QuestionId = 2,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5316)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5863)
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5318),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5865),
                             IsCorrect = false,
                             OptionText = "9",
                             OptionTextArabic = "9",
                             OrderIndex = 4,
                             QuestionId = 2,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5318)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5865)
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5320),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5867),
                             IsCorrect = true,
                             OptionText = "30",
                             OptionTextArabic = "30",
                             OrderIndex = 1,
                             QuestionId = 4,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5320)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5867)
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5322),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5869),
                             IsCorrect = false,
                             OptionText = "25",
                             OptionTextArabic = "25",
                             OrderIndex = 2,
                             QuestionId = 4,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5322)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5869)
                         },
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5324),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5871),
                             IsCorrect = false,
                             OptionText = "35",
                             OptionTextArabic = "35",
                             OrderIndex = 3,
                             QuestionId = 4,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5324)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5871)
                         },
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5326),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5873),
                             IsCorrect = false,
                             OptionText = "40",
                             OptionTextArabic = "40",
                             OrderIndex = 4,
                             QuestionId = 4,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5326)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5873)
                         },
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5345),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5894),
                             IsCorrect = true,
                             OptionText = "Newton",
                             OptionTextArabic = "نيوتن",
                             OrderIndex = 1,
                             QuestionId = 6,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5346)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5895)
                         },
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5347),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5896),
                             IsCorrect = false,
                             OptionText = "Joule",
                             OptionTextArabic = "جول",
                             OrderIndex = 2,
                             QuestionId = 6,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5348)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5897)
                         },
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5349),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5899),
                             IsCorrect = false,
                             OptionText = "Watt",
                             OptionTextArabic = "واط",
                             OrderIndex = 3,
                             QuestionId = 6,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5350)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5899)
                         },
                         new
                         {
                             Id = 16,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5352),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5901),
                             IsCorrect = false,
                             OptionText = "Pascal",
                             OptionTextArabic = "باسكال",
                             OrderIndex = 4,
                             QuestionId = 6,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5352)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5901)
                         },
                         new
                         {
                             Id = 17,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5354),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5903),
                             IsCorrect = true,
                             OptionText = "KE = 1/2 mv²",
                             OptionTextArabic = "ط ح = 1/2 ك ع²",
                             OrderIndex = 1,
                             QuestionId = 8,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5354)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5903)
                         },
                         new
                         {
                             Id = 18,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5356),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5905),
                             IsCorrect = false,
                             OptionText = "KE = mv",
                             OptionTextArabic = "ط ح = ك ع",
                             OrderIndex = 2,
                             QuestionId = 8,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5356)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5905)
                         },
                         new
                         {
                             Id = 19,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5358),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5906),
                             IsCorrect = false,
                             OptionText = "KE = mgh",
                             OptionTextArabic = "ط ح = ك ج ع",
                             OrderIndex = 3,
                             QuestionId = 8,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5358)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5907)
                         },
                         new
                         {
                             Id = 20,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5359),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5908),
                             IsCorrect = false,
                             OptionText = "KE = Fd",
                             OptionTextArabic = "ط ح = ق ف",
                             OrderIndex = 4,
                             QuestionId = 8,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5360)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5909)
                         },
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5361),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5910),
                             IsCorrect = true,
                             OptionText = "Watt",
                             OptionTextArabic = "واط",
                             OrderIndex = 1,
                             QuestionId = 10,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5362)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5911)
                         },
                         new
                         {
                             Id = 22,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5363),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5912),
                             IsCorrect = false,
                             OptionText = "Joule",
                             OptionTextArabic = "جول",
                             OrderIndex = 2,
                             QuestionId = 10,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5364)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5913)
                         },
                         new
                         {
                             Id = 23,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5365),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5914),
                             IsCorrect = false,
                             OptionText = "Newton",
                             OptionTextArabic = "نيوتن",
                             OrderIndex = 3,
                             QuestionId = 10,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5366)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5914)
                         },
                         new
                         {
                             Id = 24,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5367),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5916),
                             IsCorrect = false,
                             OptionText = "Meter",
                             OptionTextArabic = "متر",
                             OrderIndex = 4,
                             QuestionId = 10,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5368)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5916)
                         },
                         new
                         {
                             Id = 25,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5384),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5934),
                             IsCorrect = true,
                             OptionText = "1",
                             OptionTextArabic = "1",
                             OrderIndex = 1,
                             QuestionId = 12,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5385)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5934)
                         },
                         new
                         {
                             Id = 26,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5386),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5936),
                             IsCorrect = false,
                             OptionText = "2",
                             OptionTextArabic = "2",
                             OrderIndex = 2,
                             QuestionId = 12,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5387)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5936)
                         },
                         new
                         {
                             Id = 27,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5388),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5938),
                             IsCorrect = false,
                             OptionText = "3",
                             OptionTextArabic = "3",
                             OrderIndex = 3,
                             QuestionId = 12,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5389)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5938)
                         },
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5390),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5940),
                             IsCorrect = false,
                             OptionText = "4",
                             OptionTextArabic = "4",
                             OrderIndex = 4,
                             QuestionId = 12,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5391)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5940)
                         },
                         new
                         {
                             Id = 29,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5392),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5942),
                             IsCorrect = true,
                             OptionText = "Au",
                             OptionTextArabic = "Au",
                             OrderIndex = 1,
                             QuestionId = 14,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5393)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5942)
                         },
                         new
                         {
                             Id = 30,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5394),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5944),
                             IsCorrect = false,
                             OptionText = "Ag",
                             OptionTextArabic = "Ag",
                             OrderIndex = 2,
                             QuestionId = 14,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5395)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5944)
                         },
                         new
                         {
                             Id = 31,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5396),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5946),
                             IsCorrect = false,
                             OptionText = "Cu",
                             OptionTextArabic = "Cu",
                             OrderIndex = 3,
                             QuestionId = 14,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5397)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5946)
                         },
                         new
                         {
                             Id = 32,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5398),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5948),
                             IsCorrect = false,
                             OptionText = "Fe",
                             OptionTextArabic = "Fe",
                             OrderIndex = 4,
                             QuestionId = 14,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5399)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5948)
                         });
                 });
 
@@ -1274,7 +1274,7 @@ namespace LibraryManagementAPI.Migrations
                         {
                             Id = 1,
                             Chapter = "Algebra",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5143),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5696),
                             Description = "Basic mathematics quiz for 10th grade students",
                             DescriptionArabic = "كويز أساسيات الرياضيات لطلاب الصف العاشر",
                             Grade = "Grade 10",
@@ -1286,13 +1286,13 @@ namespace LibraryManagementAPI.Migrations
                             Title = "Mathematics Quiz - Grade 10",
                             TitleArabic = "كويز الرياضيات - الصف العاشر",
                             TotalQuestions = 5,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5143)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5697)
                         },
                         new
                         {
                             Id = 2,
                             Chapter = "Mechanics",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5147),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5701),
                             Description = "Physics fundamentals for Tawjihi students",
                             DescriptionArabic = "أساسيات الفيزياء لطلاب التوجيهي",
                             Grade = "Tawjihi",
@@ -1304,13 +1304,13 @@ namespace LibraryManagementAPI.Migrations
                             Title = "Physics Quiz - Tawjihi",
                             TitleArabic = "كويز الفيزياء - التوجيهي",
                             TotalQuestions = 6,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5147)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5701)
                         },
                         new
                         {
                             Id = 3,
                             Chapter = "Atomic Structure",
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5150),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5704),
                             Description = "Chemistry basics for 11th grade students",
                             DescriptionArabic = "أساسيات الكيمياء لطلاب الصف الحادي عشر",
                             Grade = "Grade 11",
@@ -1322,7 +1322,7 @@ namespace LibraryManagementAPI.Migrations
                             Title = "Chemistry Quiz - Grade 11",
                             TitleArabic = "كويز الكيمياء - الصف الحادي عشر",
                             TotalQuestions = 4,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5151)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5704)
                         });
                 });
 
@@ -1463,183 +1463,433 @@ namespace LibraryManagementAPI.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5171),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5732),
                             OrderIndex = 1,
                             Points = 1,
                             QuestionText = "What is the value of x in the equation 2x + 5 = 13?",
                             QuestionTextArabic = "ما قيمة س في المعادلة 2س + 5 = 13؟",
                             QuizId = 1,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5172)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5733)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5175),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5735),
                             OrderIndex = 2,
                             Points = 1,
                             QuestionText = "Solve: 3x - 7 = 8",
                             QuestionTextArabic = "حل المعادلة: 3س - 7 = 8",
                             QuizId = 1,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5175)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5736)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5177),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5738),
                             OrderIndex = 3,
                             Points = 1,
                             QuestionText = "The square root of 16 is 4",
                             QuestionTextArabic = "الجذر التربيعي لـ 16 هو 4",
                             QuizId = 1,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5177)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5738)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5179),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5740),
                             OrderIndex = 4,
                             Points = 1,
                             QuestionText = "What is 15% of 200?",
                             QuestionTextArabic = "ما هو 15% من 200؟",
                             QuizId = 1,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5180)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5740)
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5182),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5742),
                             OrderIndex = 5,
                             Points = 1,
                             QuestionText = "The sum of angles in a triangle is 180 degrees",
                             QuestionTextArabic = "مجموع زوايا المثلث 180 درجة",
                             QuizId = 1,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5182)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5743)
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5201),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5760),
                             OrderIndex = 1,
                             Points = 1,
                             QuestionText = "What is the SI unit of force?",
                             QuestionTextArabic = "ما هي وحدة القوة في النظام الدولي؟",
                             QuizId = 2,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5201)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5760)
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5203),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5762),
                             OrderIndex = 2,
                             Points = 1,
                             QuestionText = "Newton's first law is also known as the law of inertia",
                             QuestionTextArabic = "قانون نيوتن الأول يعرف أيضاً بقانون القصور الذاتي",
                             QuizId = 2,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5204)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5762)
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5205),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5764),
                             OrderIndex = 3,
                             Points = 1,
                             QuestionText = "What is the formula for kinetic energy?",
                             QuestionTextArabic = "ما هي معادلة الطاقة الحركية؟",
                             QuizId = 2,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5206)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5764)
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5208),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5766),
                             OrderIndex = 4,
                             Points = 1,
                             QuestionText = "Gravity is a force that pulls objects toward the center of the Earth",
                             QuestionTextArabic = "الجاذبية قوة تجذب الأجسام نحو مركز الأرض",
                             QuizId = 2,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5208)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5767)
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5253),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5769),
                             OrderIndex = 5,
                             Points = 1,
                             QuestionText = "What is the unit of power?",
                             QuestionTextArabic = "ما هي وحدة القدرة؟",
                             QuizId = 2,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5253)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5769)
                         },
                         new
                         {
                             Id = 11,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5255),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5771),
                             OrderIndex = 6,
                             Points = 1,
                             QuestionText = "Velocity is a scalar quantity",
                             QuestionTextArabic = "السرعة كمية قياسية",
                             QuizId = 2,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5256)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5771)
                         },
                         new
                         {
                             Id = 12,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5275),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5787),
                             OrderIndex = 1,
                             Points = 1,
                             QuestionText = "What is the atomic number of hydrogen?",
                             QuestionTextArabic = "ما هو العدد الذري للهيدروجين؟",
                             QuizId = 3,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5275)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5788)
                         },
                         new
                         {
                             Id = 13,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5277),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5789),
                             OrderIndex = 2,
                             Points = 1,
                             QuestionText = "The nucleus contains protons and neutrons",
                             QuestionTextArabic = "النواة تحتوي على البروتونات والنيوترونات",
                             QuizId = 3,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5277)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5790)
                         },
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5279),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5792),
                             OrderIndex = 3,
                             Points = 1,
                             QuestionText = "What is the chemical symbol for gold?",
                             QuestionTextArabic = "ما هو الرمز الكيميائي للذهب؟",
                             QuizId = 3,
                             Type = 0,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5279)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5792)
                         },
                         new
                         {
                             Id = 15,
-                            CreatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5281),
+                            CreatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5794),
                             OrderIndex = 4,
                             Points = 1,
                             QuestionText = "Electrons have a positive charge",
                             QuestionTextArabic = "الإلكترونات لها شحنة موجبة",
                             QuizId = 3,
                             Type = 1,
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5282)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5794)
                         });
+                });
+
+            modelBuilder.Entity("LibraryManagementAPI.Models.StudyMaterial", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+
+                    b.Property<string>("Delivery")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasDefaultValue("PDF / طباعة");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DescriptionArabic")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Downloads")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Features")
+                        .HasColumnType("longtext");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
+                    b.Property<decimal>("Price")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(10,2)")
+                        .HasDefaultValue(0.0m);
+
+                    b.Property<decimal>("Rating")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(3,2)")
+                        .HasDefaultValue(0.0m);
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasDefaultValue("متوفر");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Teacher")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("TitleArabic")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Category");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("Subject");
+
+                    b.ToTable("StudyMaterials");
+                });
+
+            modelBuilder.Entity("LibraryManagementAPI.Models.StudySchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DescriptionArabic")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Focus")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("FocusArabic")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Grade")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("OrderIndex")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("Subjects")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("TitleArabic")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Grade");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("Type");
+
+                    b.ToTable("StudySchedules");
+                });
+
+            modelBuilder.Entity("LibraryManagementAPI.Models.StudyTip", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("DescriptionArabic")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Grade")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("OrderIndex")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(0);
+
+                    b.Property<string>("Subject")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Tips")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("TitleArabic")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Category");
+
+                    b.HasIndex("Grade");
+
+                    b.HasIndex("IsActive");
+
+                    b.HasIndex("Subject");
+
+                    b.ToTable("StudyTips");
                 });
 
             modelBuilder.Entity("LibraryManagementAPI.Models.SystemSetting", b =>
@@ -1681,7 +1931,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library WhatsApp contact number",
                             SettingKey = "WhatsAppPhoneNumber",
                             SettingValue = "+962785462983",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5098)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5656)
                         },
                         new
                         {
@@ -1689,7 +1939,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "WhatsApp message template for book inquiries",
                             SettingKey = "WhatsAppMessageTemplate",
                             SettingValue = "مرحباً، أود الاستفسار عن توفر كتاب: {BookTitle} - {BookAuthor}",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5100)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5659)
                         },
                         new
                         {
@@ -1697,7 +1947,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library name",
                             SettingKey = "LibraryName",
                             SettingValue = "ROYAL STUDY",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5102)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5660)
                         },
                         new
                         {
@@ -1705,7 +1955,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library name in English",
                             SettingKey = "LibraryNameEnglish",
                             SettingValue = "ROYAL STUDY",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5103)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5661)
                         },
                         new
                         {
@@ -1713,7 +1963,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library contact email",
                             SettingKey = "ContactEmail",
                             SettingValue = "info@royalstudy.com",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5104)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5661)
                         },
                         new
                         {
@@ -1721,7 +1971,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library contact phone",
                             SettingKey = "ContactPhone",
                             SettingValue = "+962785462983",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5105)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5662)
                         },
                         new
                         {
@@ -1729,7 +1979,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library address",
                             SettingKey = "LibraryAddress",
                             SettingValue = "إربد، الأردن",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5105)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5663)
                         },
                         new
                         {
@@ -1737,7 +1987,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library address in English",
                             SettingKey = "LibraryAddressEnglish",
                             SettingValue = "Irbid, Jordan",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5106)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5664)
                         },
                         new
                         {
@@ -1745,7 +1995,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library currency",
                             SettingKey = "Currency",
                             SettingValue = "د.أ",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5107)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5665)
                         },
                         new
                         {
@@ -1753,7 +2003,7 @@ namespace LibraryManagementAPI.Migrations
                             Description = "Library currency in English",
                             SettingKey = "CurrencyEnglish",
                             SettingValue = "JOD",
-                            UpdatedAt = new DateTime(2025, 8, 7, 10, 43, 17, 764, DateTimeKind.Utc).AddTicks(5108)
+                            UpdatedAt = new DateTime(2025, 8, 20, 22, 10, 22, 929, DateTimeKind.Utc).AddTicks(5666)
                         });
                 });
 
