@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center mb-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-royal-gold to-yellow-500 rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
+              <div className="w-16 h-16 bg-royal-gold rounded-xl flex items-center justify-center shadow-lg overflow-hidden">
                 <img 
                   src="/royal-study-logo.png" 
                   alt="ROYAL STUDY Logo" 
@@ -19,7 +19,7 @@ const Footer = () => {
                     e.target.nextSibling.style.display = 'flex';
                   }}
                 />
-                <BookOpen className="w-8 h-8 text-royal-gold hidden" />
+                <BookOpen className="w-8 h-8 text-royal-black hidden" />
               </div>
             </Link>
             <p className="text-royal-beige/80 mb-4 max-w-md">
@@ -44,12 +44,12 @@ const Footer = () => {
                 { name: 'الرزنامة الطلابية', href: '/calendar' },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link 
-                    to={link.href}
-                    className="text-royal-beige/80 hover:text-royal-gold transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                                     <Link 
+                     to={link.href}
+                     className="text-royal-beige/80 hover:text-royal-gold hover:underline transition-colors"
+                   >
+                     {link.name}
+                   </Link>
                 </li>
               ))}
             </ul>

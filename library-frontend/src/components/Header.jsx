@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   BookOpen, 
@@ -15,9 +15,10 @@ import {
   Shield
 } from 'lucide-react';
 
-const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => {
+const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navigation = [
     { name: 'الرئيسية', href: '/', icon: BookOpen },
@@ -31,17 +32,11 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
   const isActive = (path) => location.pathname === path;
 
   const handleLogin = () => {
-    if (onLogin) {
-      onLogin();
-    }
+    navigate('/login');
   };
 
   const handleRegister = () => {
-    if (onRegister) {
-      onRegister();
-    } else {
-      window.location.href = '/register';
-    }
+    navigate('/register');
   };
 
   return (
@@ -49,20 +44,20 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-18">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
-            <div className="w-16 h-16 bg-gradient-to-br from-royal-gold to-yellow-500 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
-              <img 
-                src="/royal-study-logo.png" 
-                alt="ROYAL STUDY Logo" 
-                className="w-14 h-14 object-contain"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
-              <BookOpen className="w-8 h-8 text-royal-gold hidden" />
-            </div>
-          </Link>
+                     <Link to="/" className="flex items-center group">
+             <div className="w-16 h-16 bg-royal-gold rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+               <img 
+                 src="/royal-study-logo.png" 
+                 alt="ROYAL STUDY Logo" 
+                 className="w-14 h-14 object-contain"
+                 onError={(e) => {
+                   e.target.style.display = 'none';
+                   e.target.nextSibling.style.display = 'flex';
+                 }}
+               />
+               <BookOpen className="w-8 h-8 text-royal-black hidden" />
+             </div>
+           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-3 space-x-reverse">
@@ -74,7 +69,7 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                   to={item.href}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-bold transition-all duration-300 ${
                     isActive(item.href)
-                      ? 'bg-royal-gold text-royal-black shadow-lg hover-scale hover-glow'
+                      ? 'bg-royal-gold text-royal-black shadow-sm hover:shadow-md hover-scale hover-glow'
                       : 'text-white hover:text-royal-gold hover:bg-white/10 hover-scale hover-glow'
                   }`}
                 >
@@ -85,11 +80,11 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
             })}
           </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden lg:flex items-center space-x-4 space-x-reverse">
+                     {/* Desktop Actions */}
+           <div className="hidden lg:flex items-center gap-6">
             {/* WhatsApp Button */}
             <Button 
-              className="bg-royal-gold hover:bg-yellow-500 text-royal-black font-bold shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300 rounded-lg px-4 py-2 text-sm"
+              className="bg-royal-gold hover:bg-yellow-500 text-royal-black font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
               onClick={() => window.open('https://wa.me/962785462983', '_blank')}
             >
               تواصل معنا
@@ -99,8 +94,8 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
             {currentUser ? (
               <>
                 {/* User Profile Button */}
-                <div className="flex items-center space-x-3 space-x-reverse">
-                  <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-3 py-2">
+                <div className="flex items-center space-x-4 space-x-reverse">
+                  <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
                     <User className="w-4 h-4 text-royal-gold" />
                     <span className="text-sm font-medium text-white">
                       {currentUser.firstName} {currentUser.lastName || ''}
@@ -110,7 +105,7 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                   {/* Admin Panel Button (if admin) */}
                   {currentUser.role === 'Admin' && (
                     <Button 
-                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300 rounded-lg px-4 py-2 text-sm"
+                      className="bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
                       onClick={onOpenAdmin}
                     >
                       <Shield className="w-4 h-4 ml-1" />
@@ -121,7 +116,7 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                   {/* Logout Button */}
                   <Button 
                     variant="outline"
-                    className="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300 rounded-lg px-4 py-2 text-sm"
+                    className="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
                     onClick={onLogout}
                   >
                     <LogOut className="w-4 h-4 ml-1" />
@@ -129,25 +124,25 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                   </Button>
                 </div>
               </>
-            ) : (
-              <>
-                {/* Login Button */}
-                <Button 
-                  variant="outline"
-                  className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300 rounded-lg px-4 py-2 text-sm"
-                  onClick={handleLogin}
-                >
-                  تسجيل الدخول
-                </Button>
+                         ) : (
+               <div className="flex items-center gap-6">
+                                 {/* Login Button */}
+                                   <Button 
+                    variant="outline"
+                    className="border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
+                    onClick={handleLogin}
+                  >
+                    تسجيل الدخول
+                  </Button>
 
-                {/* Register Button */}
-                <Button 
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300 rounded-lg px-4 py-2 text-sm"
-                  onClick={handleRegister}
-                >
-                  التسجيل
-                </Button>
-              </>
+                  {/* Register Button */}
+                  <Button 
+                    className="bg-green-500 hover:bg-green-600 text-white font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
+                    onClick={handleRegister}
+                  >
+                    التسجيل
+                  </Button>
+              </div>
             )}
           </div>
 
@@ -180,7 +175,7 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                     to={item.href}
                     className={`flex items-center space-x-6 px-4 py-4 rounded-xl text-sm font-bold transition-all duration-300 min-w-[140px] justify-center ${
                       isActive(item.href)
-                        ? 'bg-royal-gold text-royal-black shadow-lg hover-scale hover-glow'
+                        ? 'bg-royal-gold text-royal-black shadow-sm hover:shadow-md hover-scale hover-glow'
                         : 'text-white hover:text-royal-gold hover:bg-white/10 hover-scale hover-glow'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
@@ -192,9 +187,9 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
               })}
               
                              {/* Mobile Action Buttons */}
-              <div className="pt-4 border-t border-royal-gold/20 space-y-4">
+              <div className="pt-6 border-t border-royal-gold/20 space-y-5">
                 <Button 
-                  className="w-full bg-royal-gold hover:bg-yellow-500 text-royal-black font-bold rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
+                  className="w-full bg-royal-gold hover:bg-yellow-500 text-royal-black font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
                   onClick={() => {
                     window.open('https://wa.me/962785462983', '_blank');
                     setIsMenuOpen(false);
@@ -216,7 +211,7 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                     {/* Admin Panel Button (if admin) */}
                     {currentUser.role === 'Admin' && (
                       <Button 
-                        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
+                        className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
                         onClick={() => {
                           onOpenAdmin();
                           setIsMenuOpen(false);
@@ -230,7 +225,7 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                     {/* Logout Button */}
                     <Button 
                       variant="outline"
-                      className="w-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
+                      className="w-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
                       onClick={() => {
                         onLogout();
                         setIsMenuOpen(false);
@@ -240,30 +235,30 @@ const Header = ({ onLogin, onRegister, currentUser, onLogout, onOpenAdmin }) => 
                       تسجيل الخروج
                     </Button>
                   </>
-                ) : (
-                  <>
-                    <Button 
-                      variant="outline"
-                      className="w-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
-                      onClick={() => {
-                        handleLogin();
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      تسجيل الدخول
-                    </Button>
-                    
-                    <Button 
-                      className="w-full bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
-                      onClick={() => {
-                        handleRegister();
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      التسجيل
-                    </Button>
-                  </>
-                )}
+                                 ) : (
+                   <div className="space-y-4">
+                     <Button 
+                       variant="outline"
+                       className="w-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
+                       onClick={() => {
+                         handleLogin();
+                         setIsMenuOpen(false);
+                       }}
+                     >
+                       تسجيل الدخول
+                     </Button>
+                     
+                     <Button 
+                       className="w-full bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
+                       onClick={() => {
+                         handleRegister();
+                         setIsMenuOpen(false);
+                       }}
+                     >
+                       التسجيل
+                     </Button>
+                   </div>
+                 )}
               </div>
             </nav>
           </div>

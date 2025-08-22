@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
+import { useNavigate, Link } from 'react-router-dom'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card.jsx'
 import { Button } from '@/components/ui/button.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Label } from '@/components/ui/label.jsx'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx'
+import { Progress } from '@/components/ui/progress.jsx'
 import { 
   User, 
   Mail, 
@@ -14,12 +15,20 @@ import {
   MapPin,
   ArrowLeft,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  BookOpen,
+  Eye,
+  EyeOff,
+  GraduationCap,
+  Check,
+  X
 } from 'lucide-react'
 import apiService from '../lib/api.js'
 
 export default function RegisterPage({ onBack, onLoginSuccess }) {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -30,12 +39,43 @@ export default function RegisterPage({ onBack, onLoginSuccess }) {
     phoneNumber: '',
     dateOfBirth: '',
     gender: '',
-    address: ''
+    address: '',
+    educationLevel: ''
   })
 
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+
+  const educationLevels = [
+    { value: 'tawjihi-scientific', label: 'توجيهي علمي' },
+    { value: 'tawjihi-literary', label: 'توجيهي أدبي' },
+    { value: 'tawjihi-commercial', label: 'توجيهي تجاري' },
+    { value: 'tawjihi-industrial', label: 'توجيهي صناعي' },
+    { value: 'tawjihi-agricultural', label: 'توجيهي زراعي' },
+    { value: 'tawjihi-hotel', label: 'توجيهي فندقي' },
+    { value: 'university', label: 'جامعي' },
+    { value: 'other', label: 'أخرى' }
+  ];
+
+  // Password strength checker
+  const checkPasswordStrength = (password) => {
+    const checks = {
+      length: password.length >= 8,
+      uppercase: /[A-Z]/.test(password),
+      lowercase: /[a-z]/.test(password),
+      number: /\d/.test(password),
+      special: /[@$!%*?&]/.test(password)
+    };
+    
+    const score = Object.values(checks).filter(Boolean).length;
+    const strength = score < 2 ? 'ضعيف' : score < 4 ? 'متوسط' : 'قوي';
+    const percentage = (score / 5) * 100;
+    
+    return { checks, score, strength, percentage };
+  };
+
+  const passwordStrength = checkPasswordStrength(formData.password);
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({
@@ -183,302 +223,405 @@ export default function RegisterPage({ onBack, onLoginSuccess }) {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-4" dir="rtl">
-        <Card className="w-full max-w-md bg-white shadow-2xl border-2 border-green-300">
-          <CardContent className="p-8 text-center">
-            <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-green-800 mb-4">🎉 تم التسجيل بنجاح!</h2>
-            <p className="text-green-700 mb-6">مرحباً بك في مكتبتنا الرقمية</p>
-            <div className="animate-pulse">
-              <p className="text-sm text-green-600">جاري تسجيل الدخول تلقائياً...</p>
-            </div>
-          </CardContent>
-        </Card>
+      <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 flex items-center justify-center px-4 py-12" dir="rtl">
+        <div className="w-full max-w-md">
+          <Card className="bg-white/95 backdrop-blur-sm shadow-2xl border-0 rounded-2xl">
+            <CardContent className="p-8 text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl overflow-hidden">
+                <img
+                  src="/royal-study-logo.png"
+                  alt="ROYAL STUDY Logo"
+                  className="w-16 h-16 object-contain"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <CheckCircle className="h-10 w-10 text-white hidden" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">🎉 تم التسجيل بنجاح!</h2>
+              <p className="text-gray-600 mb-6">مرحباً بك في المكتبة الملكية الدراسية</p>
+              <div className="animate-pulse">
+                <p className="text-sm text-yellow-600">جاري تسجيل الدخول تلقائياً...</p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200" dir="rtl">
-      <div className="container mx-auto px-4 pt-4">
-        <div className="flex gap-2 mb-2">
-          <button onClick={() => navigate('/')} className="text-sm underline">الرئيسية</button>
-          <button onClick={() => navigate('/quizzes')} className="text-sm underline">الكويزات</button>
-          <button onClick={() => navigate('/my-attempts')} className="text-sm underline">محاولاتي</button>
-          <button onClick={() => window.history.back()} className="text-sm underline">رجوع</button>
-        </div>
-      </div>
-      {/* Header */}
-      <div className="bg-gradient-to-r from-black via-amber-900 to-amber-800 shadow-xl border-b-4 border-amber-400">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4 space-x-reverse">
-              <Button variant="outline" size="sm" onClick={onBack} className="flex items-center bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-black font-bold border-2 border-amber-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <ArrowLeft className="h-4 w-4 ml-2" />
-                🏠 العودة للرئيسية
-              </Button>
-              <div className="flex items-center space-x-3 space-x-reverse">
-                <div className="p-2 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl shadow-lg">
-                  <User className="h-8 w-8 text-black" />
-                </div>
-                <h1 className="text-4xl font-bold text-amber-100 drop-shadow-lg">📝 تسجيل حساب جديد</h1>
-              </div>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 flex items-center justify-center px-4 py-12" dir="rtl">
+      <div className="w-full max-w-2xl">
+        {/* Logo and Welcome */}
+        <div className="text-center mb-8">
+          <div className="w-24 h-24 bg-gradient-to-br from-yellow-600 to-yellow-700 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl overflow-hidden">
+            <img
+              src="/royal-study-logo.png"
+              alt="ROYAL STUDY Logo"
+              className="w-20 h-20 object-contain"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+            <BookOpen className="w-12 h-12 text-white hidden" />
           </div>
+          <h1 className="text-4xl font-black text-white mb-2">انضم إلينا</h1>
+          <p className="text-white/90 text-lg">أنشئ حسابك وابدأ رحلة التفوق</p>
         </div>
-      </div>
 
-      {/* Registration Form */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="max-w-2xl mx-auto">
-          <Card className="bg-gradient-to-br from-white to-amber-50 border-2 border-amber-300 shadow-2xl">
-            <CardHeader className="text-center pb-6">
-              <CardTitle className="text-3xl font-bold text-amber-900">🎯 انضم إلى مكتبتنا الرقمية</CardTitle>
-              <CardDescription className="text-lg text-amber-700">
-                سجل حسابك الجديد واستمتع بقراءة الكتب الرائعة
-              </CardDescription>
-            </CardHeader>
-            
-            <CardContent className="p-8">
-              {errors.general && (
-                <div className="mb-6 p-4 bg-red-50 border-2 border-red-300 rounded-xl">
-                  <div className="flex items-center space-x-2 space-x-reverse">
-                    <AlertCircle className="h-5 w-5 text-red-500" />
-                    <span className="text-red-700 font-medium">{errors.general}</span>
-                  </div>
+        {/* Signup Form */}
+        <Card className="bg-white/95 backdrop-blur-sm shadow-2xl border-0 rounded-3xl">
+          <CardHeader className="text-center pb-6">
+            <h2 className="text-2xl font-bold text-gray-800">إنشاء حساب جديد</h2>
+          </CardHeader>
+          
+          <CardContent className="p-8">
+            {errors.general && (
+              <div className="mb-6 p-4 bg-red-50 border-2 border-red-300 rounded-xl">
+                <div className="flex items-center space-x-2 space-x-reverse">
+                  <AlertCircle className="h-5 w-5 text-red-500" />
+                  <span className="text-red-700 font-medium">{errors.general}</span>
                 </div>
-              )}
+              </div>
+            )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div className="bg-amber-50 p-6 rounded-xl border-2 border-amber-200">
-                  <h3 className="text-xl font-bold text-amber-900 mb-4 flex items-center">
-                    👤 المعلومات الشخصية
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName" className="text-lg font-bold text-amber-800">
-                        الاسم الأول *
-                      </Label>
-                      <Input
-                        id="firstName"
-                        value={formData.firstName}
-                        onChange={(e) => handleInputChange('firstName', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.firstName ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="أدخل اسمك الأول..."
-                      />
-                      {errors.firstName && (
-                        <p className="text-red-600 text-sm">{errors.firstName}</p>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName" className="text-lg font-bold text-amber-800">
-                        الاسم الأخير *
-                      </Label>
-                      <Input
-                        id="lastName"
-                        value={formData.lastName}
-                        onChange={(e) => handleInputChange('lastName', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.lastName ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="أدخل اسمك الأخير..."
-                      />
-                      {errors.lastName && (
-                        <p className="text-red-600 text-sm">{errors.lastName}</p>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="dateOfBirth" className="text-lg font-bold text-amber-800">
-                        تاريخ الميلاد *
-                      </Label>
-                      <Input
-                        id="dateOfBirth"
-                        type="date"
-                        value={formData.dateOfBirth}
-                        onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.dateOfBirth ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                      />
-                      {errors.dateOfBirth && (
-                        <p className="text-red-600 text-sm">{errors.dateOfBirth}</p>
-                      )}
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="gender" className="text-lg font-bold text-amber-800">
-                        الجنس *
-                      </Label>
-                      <Select value={formData.gender} onValueChange={(value) => handleInputChange('gender', value)}>
-                        <SelectTrigger className={`text-lg p-4 border-2 ${errors.gender ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50`}>
-                          <SelectValue placeholder="اختر الجنس..." />
-                        </SelectTrigger>
-                        <SelectContent className="bg-white border-2 border-amber-300 rounded-xl">
-                          <SelectItem value="ذكر" className="text-lg hover:bg-amber-100">👨 ذكر</SelectItem>
-                          <SelectItem value="أنثى" className="text-lg hover:bg-amber-100">👩 أنثى</SelectItem>
-                        </SelectContent>
-                      </Select>
-                      {errors.gender && (
-                        <p className="text-red-600 text-sm">{errors.gender}</p>
-                      )}
-                    </div>
-                  </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Personal Information - Grouped */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="firstName" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <User className="w-4 h-4 ml-2" />
+                    الاسم الأول
+                  </Label>
+                  <Input
+                    id="firstName"
+                    type="text"
+                    placeholder="الاسم الأول"
+                    value={formData.firstName}
+                    onChange={(e) => handleInputChange('firstName', e.target.value)}
+                    required
+                    className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                  />
+                  {errors.firstName && (
+                    <p className="text-red-600 text-sm">{errors.firstName}</p>
+                  )}
                 </div>
 
-                {/* Contact Information */}
-                <div className="bg-amber-50 p-6 rounded-xl border-2 border-amber-200">
-                  <h3 className="text-xl font-bold text-amber-900 mb-4 flex items-center">
-                    📞 معلومات الاتصال
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-lg font-bold text-amber-800">
-                        البريد الإلكتروني *
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.email ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="example@email.com"
-                      />
-                      {errors.email && (
-                        <p className="text-red-600 text-sm">{errors.email}</p>
-                      )}
-                    </div>
+                <div className="space-y-2">
+                  <Label htmlFor="lastName" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <User className="w-4 h-4 ml-2" />
+                    اسم العائلة
+                  </Label>
+                  <Input
+                    id="lastName"
+                    type="text"
+                    placeholder="اسم العائلة"
+                    value={formData.lastName}
+                    onChange={(e) => handleInputChange('lastName', e.target.value)}
+                    required
+                    className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                  />
+                  {errors.lastName && (
+                    <p className="text-red-600 text-sm">{errors.lastName}</p>
+                  )}
+                </div>
+              </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="phoneNumber" className="text-lg font-bold text-amber-800">
-                        رقم الهاتف *
-                      </Label>
-                      <Input
-                        id="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.phoneNumber ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="+962785462983"
-                      />
-                      {errors.phoneNumber && (
-                        <p className="text-red-600 text-sm">{errors.phoneNumber}</p>
-                      )}
-                    </div>
-
-                    <div className="md:col-span-2 space-y-2">
-                      <Label htmlFor="address" className="text-lg font-bold text-amber-800">
-                        العنوان
-                      </Label>
-                      <Input
-                        id="address"
-                        value={formData.address}
-                        onChange={(e) => handleInputChange('address', e.target.value)}
-                        className="text-lg p-4 border-2 border-amber-300 focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300"
-                        placeholder="أدخل عنوانك..."
-                      />
-                    </div>
-                  </div>
+              {/* Contact Information - Grouped */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <Mail className="w-4 h-4 ml-2" />
+                    البريد الإلكتروني
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="أدخل بريدك الإلكتروني"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    required
+                    className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                    dir="ltr"
+                  />
+                  {errors.email && (
+                    <p className="text-red-600 text-sm">{errors.email}</p>
+                  )}
                 </div>
 
-                {/* Account Information */}
-                <div className="bg-amber-50 p-6 rounded-xl border-2 border-amber-200">
-                  <h3 className="text-xl font-bold text-amber-900 mb-4 flex items-center">
-                    🔐 معلومات الحساب
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="username" className="text-lg font-bold text-amber-800">
-                        اسم المستخدم *
-                      </Label>
-                      <Input
-                        id="username"
-                        value={formData.username}
-                        onChange={(e) => handleInputChange('username', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.username ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="username123"
-                      />
-                      {errors.username && (
-                        <p className="text-red-600 text-sm">{errors.username}</p>
-                      )}
-                    </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phoneNumber" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <Phone className="w-4 h-4 ml-2" />
+                    رقم الهاتف
+                  </Label>
+                  <Input
+                    id="phoneNumber"
+                    type="tel"
+                    placeholder="+962785462983"
+                    value={formData.phoneNumber}
+                    onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                    required
+                    className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                    dir="ltr"
+                  />
+                  {errors.phoneNumber && (
+                    <p className="text-red-600 text-sm">{errors.phoneNumber}</p>
+                  )}
+                </div>
+              </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="password" className="text-lg font-bold text-amber-800">
-                        كلمة المرور *
-                      </Label>
-                      <Input
-                        id="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={(e) => handleInputChange('password', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.password ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="كلمة المرور..."
-                      />
-                      {errors.password && (
-                        <p className="text-red-600 text-sm">{errors.password}</p>
-                      )}
-                    </div>
-
-                    <div className="md:col-span-2 space-y-2">
-                      <Label htmlFor="confirmPassword" className="text-lg font-bold text-amber-800">
-                        تأكيد كلمة المرور *
-                      </Label>
-                      <Input
-                        id="confirmPassword"
-                        type="password"
-                        value={formData.confirmPassword}
-                        onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                        className={`text-lg p-4 border-2 ${errors.confirmPassword ? 'border-red-400' : 'border-amber-300'} focus:border-amber-500 rounded-xl bg-white focus:bg-amber-50 transition-all duration-300`}
-                        placeholder="أعد إدخال كلمة المرور..."
-                      />
-                      {errors.confirmPassword && (
-                        <p className="text-red-600 text-sm">{errors.confirmPassword}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="mt-4 p-4 bg-blue-50 border-2 border-blue-200 rounded-xl">
-                    <h4 className="font-bold text-blue-800 mb-2">🔒 متطلبات كلمة المرور:</h4>
-                    <ul className="text-sm text-blue-700 space-y-1">
-                      <li>• 8 أحرف على الأقل</li>
-                      <li>• حرف كبير واحد على الأقل</li>
-                      <li>• حرف صغير واحد على الأقل</li>
-                      <li>• رقم واحد على الأقل</li>
-                      <li>• رمز خاص واحد على الأقل (@$!%*?&)</li>
-                    </ul>
-                  </div>
+              {/* Account Information - Grouped */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="username" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <User className="w-4 h-4 ml-2" />
+                    اسم المستخدم
+                  </Label>
+                  <Input
+                    id="username"
+                    type="text"
+                    placeholder="اسم المستخدم"
+                    value={formData.username}
+                    onChange={(e) => handleInputChange('username', e.target.value)}
+                    required
+                    className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                  />
+                  {errors.username && (
+                    <p className="text-red-600 text-sm">{errors.username}</p>
+                  )}
                 </div>
 
-                {/* Submit Button */}
-                <div className="flex gap-4 pt-6">
-                  <Button 
-                    type="button" 
-                    variant="outline" 
-                    onClick={onBack}
-                    className="flex-1 px-8 py-4 text-lg font-bold bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white border-2 border-gray-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  >
-                    ❌ إلغاء
-                  </Button>
-                  <Button 
-                    type="submit"
-                    disabled={loading}
-                    className="flex-1 px-8 py-4 text-lg font-bold bg-gradient-to-r from-green-400 to-green-500 hover:from-green-500 hover:to-green-600 text-white border-2 border-green-600 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 disabled:opacity-50"
-                  >
-                    {loading ? (
-                      <div className="flex items-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent ml-2"></div>
-                        جاري التسجيل...
+                <div className="space-y-2">
+                  <Label className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <GraduationCap className="w-4 h-4 ml-2" />
+                    المستوى التعليمي
+                  </Label>
+                  <Select onValueChange={(value) => handleInputChange('educationLevel', value)}>
+                    <SelectTrigger className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right">
+                      <SelectValue placeholder="اختر مستواك التعليمي" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {educationLevels.map((level) => (
+                        <SelectItem key={level.value} value={level.value}>
+                          {level.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              {/* Password Section with Strength Indicator */}
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <Lock className="w-4 h-4 ml-2" />
+                    كلمة المرور
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="أدخل كلمة المرور"
+                      value={formData.password}
+                      onChange={(e) => handleInputChange('password', e.target.value)}
+                      required
+                      className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 pr-12 text-right"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-yellow-600 transition-colors"
+                    >
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
+                  
+                  {/* Password Strength Indicator */}
+                  {formData.password && (
+                    <div className="space-y-3 p-4 bg-gray-50 rounded-xl">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-700">قوة كلمة المرور:</span>
+                        <span className={`text-sm font-bold ${
+                          passwordStrength.strength === 'قوي' ? 'text-green-600' :
+                          passwordStrength.strength === 'متوسط' ? 'text-yellow-600' : 'text-red-600'
+                        }`}>
+                          {passwordStrength.strength}
+                        </span>
                       </div>
-                    ) : (
-                      <>
-                        <User className="h-5 w-5 ml-2" />
-                        📝 تسجيل الحساب
-                      </>
-                    )}
-                  </Button>
+                      
+                      <Progress value={passwordStrength.percentage} className="h-2" />
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+                        <div className={`flex items-center space-x-2 space-x-reverse ${passwordStrength.checks.length ? 'text-green-600' : 'text-gray-500'}`}>
+                          {passwordStrength.checks.length ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                          <span>8 أحرف على الأقل</span>
+                        </div>
+                        <div className={`flex items-center space-x-2 space-x-reverse ${passwordStrength.checks.uppercase ? 'text-green-600' : 'text-gray-500'}`}>
+                          {passwordStrength.checks.uppercase ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                          <span>حرف كبير</span>
+                        </div>
+                        <div className={`flex items-center space-x-2 space-x-reverse ${passwordStrength.checks.lowercase ? 'text-green-600' : 'text-gray-500'}`}>
+                          {passwordStrength.checks.lowercase ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                          <span>حرف صغير</span>
+                        </div>
+                        <div className={`flex items-center space-x-2 space-x-reverse ${passwordStrength.checks.number ? 'text-green-600' : 'text-gray-500'}`}>
+                          {passwordStrength.checks.number ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                          <span>رقم</span>
+                        </div>
+                        <div className={`flex items-center space-x-2 space-x-reverse ${passwordStrength.checks.special ? 'text-green-600' : 'text-gray-500'}`}>
+                          {passwordStrength.checks.special ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
+                          <span>رمز خاص (@$!%*?&)</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {errors.password && (
+                    <p className="text-red-600 text-sm">{errors.password}</p>
+                  )}
                 </div>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <Lock className="w-4 h-4 ml-2" />
+                    تأكيد كلمة المرور
+                  </Label>
+                  <div className="relative">
+                    <Input
+                      id="confirmPassword"
+                      type={showConfirmPassword ? 'text' : 'password'}
+                      placeholder="أعد إدخال كلمة المرور"
+                      value={formData.confirmPassword}
+                      onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                      required
+                      className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 pr-12 text-right"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-yellow-600 transition-colors"
+                    >
+                      {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
+                  {errors.confirmPassword && (
+                    <p className="text-red-600 text-sm">{errors.confirmPassword}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Personal Details - Grouped */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="dateOfBirth" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <Calendar className="w-4 h-4 ml-2" />
+                    تاريخ الميلاد
+                  </Label>
+                  <Input
+                    id="dateOfBirth"
+                    type="date"
+                    value={formData.dateOfBirth}
+                    onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
+                    required
+                    className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                  />
+                  {errors.dateOfBirth && (
+                    <p className="text-red-600 text-sm">{errors.dateOfBirth}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="gender" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                    <User className="w-4 h-4 ml-2" />
+                    الجنس
+                  </Label>
+                  <Select value={formData.gender} onValueChange={(value) => handleInputChange('gender', value)}>
+                    <SelectTrigger className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right">
+                      <SelectValue placeholder="اختر الجنس" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="ذكر">👨 ذكر</SelectItem>
+                      <SelectItem value="أنثى">👩 أنثى</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {errors.gender && (
+                    <p className="text-red-600 text-sm">{errors.gender}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Address */}
+              <div className="space-y-2">
+                <Label htmlFor="address" className="text-gray-800 font-semibold text-right flex items-center justify-end">
+                  <MapPin className="w-4 h-4 ml-2" />
+                  العنوان
+                </Label>
+                <Input
+                  id="address"
+                  type="text"
+                  placeholder="أدخل عنوانك"
+                  value={formData.address}
+                  onChange={(e) => handleInputChange('address', e.target.value)}
+                  className="h-12 rounded-xl border-2 border-gray-200 focus:border-yellow-500 focus:ring-yellow-500 text-right"
+                />
+              </div>
+
+              {/* Terms and Conditions */}
+              <div className="flex items-start space-x-2 space-x-reverse">
+                <input 
+                  type="checkbox" 
+                  id="terms"
+                  required
+                  className="mt-1 rounded border-gray-300 text-yellow-600 focus:ring-yellow-500" 
+                />
+                <label htmlFor="terms" className="text-sm text-gray-700 leading-relaxed">
+                  أوافق على{' '}
+                  <Link to="#" className="text-yellow-600 hover:text-yellow-700 font-semibold">
+                    شروط الاستخدام
+                  </Link>
+                  {' '}و{' '}
+                  <Link to="#" className="text-yellow-600 hover:text-yellow-700 font-semibold">
+                    سياسة الخصوصية
+                  </Link>
+                </label>
+              </div>
+
+              {/* Submit Button */}
+              <Button 
+                type="submit"
+                disabled={loading}
+                className="w-full h-14 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50"
+              >
+                {loading ? (
+                  <div className="flex items-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent ml-2"></div>
+                    جاري التسجيل...
+                  </div>
+                ) : (
+                  'إنشاء الحساب'
+                )}
+              </Button>
+            </form>
+          </CardContent>
+
+          <CardFooter className="text-center p-6">
+            <p className="text-gray-600 w-full">
+              تملك حساباً بالفعل؟{' '}
+              <Link 
+                to="/login" 
+                className="text-yellow-600 hover:text-yellow-700 font-bold transition-colors"
+              >
+                تسجيل الدخول
+              </Link>
+            </p>
+          </CardFooter>
+        </Card>
+
+
       </div>
     </div>
   )

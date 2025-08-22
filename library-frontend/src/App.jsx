@@ -16,6 +16,7 @@ import AuthorsPage from './pages/AuthorsPage.jsx'
 import CategoriesPage from './pages/CategoriesPage.jsx'
 import ContactPage from './pages/ContactPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
+import LoginPage from './pages/LoginPage.jsx'
 import QuizzesPage from './pages/QuizzesPage.jsx'
 import QuizPage from './pages/QuizPage.jsx'
 import QuizResultsPage from './pages/QuizResultsPage.jsx'
@@ -278,131 +279,7 @@ function BooksGrid({ books, loading, onWhatsAppInquiry }) {
 
 
 
-// Login Modal Component with Royal Black & Gold Theme
-function LoginModal({ isOpen, onClose, onLogin }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setError('')
-
-    try {
-      const response = await apiService.login(email, password)
-      onLogin(response.user, response.token)
-      onClose()
-      setEmail('')
-      setPassword('')
-    } catch (error) {
-      console.error('Login error:', error)
-      setError('فشل في تسجيل الدخول. يرجى التحقق من البيانات المدخلة.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-md bg-royal-black border-2 border-royal-gold/30 shadow-2xl" dir="rtl">
-        <DialogHeader className="text-center mb-6">
-          <div className="w-16 h-16 bg-gradient-to-br from-royal-gold to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg overflow-hidden">
-            <img 
-              src="/royal-study-logo.png" 
-              alt="ROYAL STUDY Logo" 
-              className="w-12 h-12 object-contain"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'flex';
-              }}
-            />
-            <span className="text-3xl text-royal-gold hidden">🔑</span>
-          </div>
-          <DialogTitle className="text-2xl font-black text-royal-gold text-center">
-            تسجيل الدخول
-          </DialogTitle>
-          <DialogDescription className="text-royal-beige/80 text-center mt-2">
-            أدخل بياناتك للوصول إلى حسابك
-          </DialogDescription>
-        </DialogHeader>
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {error && (
-            <div className="bg-red-500/20 border border-red-500/50 px-4 py-3 rounded-xl text-red-300 text-right">
-              <div className="flex items-center space-x-2 space-x-reverse">
-                <span className="text-lg">⚠️</span>
-                <span>{error}</span>
-              </div>
-            </div>
-          )}
-          
-          <div className="space-y-3">
-            <Label htmlFor="email" className="text-right block text-royal-beige font-bold text-sm">
-              البريد الإلكتروني
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="أدخل بريدك الإلكتروني"
-              className="text-right bg-royal-black/50 border-2 border-royal-gold/30 text-royal-beige placeholder:text-royal-beige/50 focus:border-royal-gold focus:ring-2 focus:ring-royal-gold/20 rounded-xl transition-all duration-300"
-              required
-            />
-          </div>
-          
-          <div className="space-y-3">
-            <Label htmlFor="password" className="text-right block text-royal-beige font-bold text-sm">
-              كلمة المرور
-            </Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="أدخل كلمة المرور"
-              className="text-right bg-royal-black/50 border-2 border-royal-gold/30 text-royal-beige placeholder:text-royal-beige/50 focus:border-royal-gold focus:ring-2 focus:ring-royal-gold/20 rounded-xl transition-all duration-300"
-              required
-            />
-          </div>
-          
-          <div className="flex gap-4 pt-6">
-            <Button 
-              type="button" 
-              variant="outline" 
-              onClick={onClose} 
-              className="flex-1 border-2 border-royal-gold/50 text-royal-gold hover:bg-royal-gold hover:text-royal-black font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              إلغاء
-            </Button>
-            <Button 
-              type="submit" 
-              disabled={isLoading} 
-              className="flex-1 bg-gradient-to-r from-royal-gold to-yellow-500 hover:from-yellow-500 hover:to-royal-gold text-royal-black font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isLoading ? (
-                <div className="flex items-center space-x-2 space-x-reverse">
-                  <div className="w-4 h-4 border-2 border-royal-black border-t-transparent rounded-full animate-spin"></div>
-                  <span>جاري تسجيل الدخول...</span>
-                </div>
-              ) : (
-                'تسجيل الدخول'
-              )}
-            </Button>
-          </div>
-        </form>
-        
-        <div className="text-center text-sm text-royal-beige/70 mt-6 p-4 bg-royal-black/30 border border-royal-gold/20 rounded-xl">
-          <p className="font-bold mb-2 text-royal-gold">للاختبار، استخدم:</p>
-          <p className="text-xs">البريد الإلكتروني: admin@library.com</p>
-          <p className="text-xs">كلمة المرور: Admin123!</p>
-        </div>
-      </DialogContent>
-    </Dialog>
-  )
-}
 
 
 
@@ -418,7 +295,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [currentUser, setCurrentUser] = useState(null)
   const [showAdminPanel, setShowAdminPanel] = useState(false)
-  const [showLoginModal, setShowLoginModal] = useState(false)
+
   const [selectedCategoryForBooks, setSelectedCategoryForBooks] = useState('all')
   const [selectedAuthorForBooks, setSelectedAuthorForBooks] = useState('all')
 
@@ -434,7 +311,7 @@ function App() {
         localStorage.removeItem('user')
       }
     } else {
-      setCurrentUser(apiService.getCurrentUser())
+    setCurrentUser(apiService.getCurrentUser())
     }
   }, [])
 
@@ -529,7 +406,6 @@ function App() {
 
   const handleLogin = (user, token = null) => {
     setCurrentUser(user)
-    setShowLoginModal(false)
     
     // If token is provided (from registration), store it
     if (token) {
@@ -692,11 +568,9 @@ ${customerData.customerName}`
   return (
     <div className="min-h-screen">
       <Header 
-        onLogin={() => setShowLoginModal(true)}
-        onRegister={() => navigate('/register')}
-        currentUser={currentUser}
-        onLogout={handleLogout}
-        onOpenAdmin={() => setShowAdminPanel(true)}
+          currentUser={currentUser}
+          onLogout={handleLogout}
+          onOpenAdmin={() => setShowAdminPanel(true)}
       />
       
       <Routes>
@@ -770,6 +644,15 @@ ${customerData.customerName}`
           </>
         } />
         
+        <Route path="/login" element={
+          <>
+            <LoginPage 
+              onLoginSuccess={handleLogin}
+            />
+            <Footer />
+          </>
+        } />
+        
         <Route path="/quizzes" element={
           <>
             <QuizzesPage />
@@ -827,12 +710,8 @@ ${customerData.customerName}`
         } />
       </Routes>
 
-      {/* Login Modal */}
-      <LoginModal
-        isOpen={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-        onLogin={handleLogin}
-      />
+
+
     </div>
   )
 }
