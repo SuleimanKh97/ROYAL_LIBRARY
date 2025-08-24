@@ -35,70 +35,7 @@ import { fixImageUrl } from './lib/api.js'
 
 
 
-// Features Section with Neumorphism - Black & Gold Theme
-function FeaturesSection() {
-  const features = [
-    {
-      icon: <Shield className="h-12 w-12" />,
-      title: "ضمان الأصالة",
-      description: "جميع الكتب أصلية 100% مع ضمان الجودة",
-      color: "from-yellow-400 to-yellow-600"
-    },
-    {
-      icon: <Truck className="h-12 w-12" />,
-      title: "شحن سريع",
-      description: "توصيل مجاني لجميع أنحاء إربد خلال 24 ساعة",
-      color: "from-yellow-500 to-yellow-700"
-    },
-    {
-      icon: <Clock className="h-12 w-12" />,
-      title: "دعم 24/7",
-      description: "فريق دعم متاح على مدار الساعة عبر واتساب",
-      color: "from-yellow-600 to-yellow-800"
-    },
-    {
-      icon: <Award className="h-12 w-12" />,
-      title: "أسعار منافسة",
-      description: "أفضل الأسعار مع عروض وخصومات مستمرة",
-      color: "from-yellow-700 to-yellow-900"
-    },
-    {
-      icon: <CheckCircle className="h-12 w-12" />,
-      title: "سهولة الطلب",
-      description: "طلب بسيط عبر واتساب مع دفع عند الاستلام",
-      color: "from-yellow-800 to-yellow-950"
-    },
-    {
-      icon: <Target className="h-12 w-12" />,
-      title: "كتب مختارة",
-      description: "مجموعة متنوعة من أفضل الكتب العربية",
-      color: "from-yellow-900 to-black"
-    }
-  ]
 
-  return (
-    <section className="py-24 bg-gradient-to-br from-[#EBB026] via-[#F4C430] to-[#FFD700]" dir="rtl">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-royal-black mb-6">✨ مميزاتنا الفريدة</h2>
-          <p className="text-2xl text-royal-black/90 font-medium">🎯 نقدم لك تجربة شراء استثنائية</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="bg-white/20 backdrop-blur-sm p-8 rounded-3xl hover:bg-white/30 transition-all duration-500 border border-royal-black/20">
-              <div className={`w-16 h-16 bg-gradient-to-br from-royal-black to-gray-800 rounded-2xl flex items-center justify-center text-white mb-6 mx-auto`}>
-                {feature.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-royal-black mb-4 text-center">{feature.title}</h3>
-              <p className="text-royal-black/80 text-center leading-relaxed">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
 
 // Book Card Component with Glassmorphism
 function BookCard({ book, onWhatsAppInquiry }) {
@@ -579,8 +516,7 @@ ${customerData.customerName}`
             <main>
               <Hero />
               
-              {/* Features Section */}
-              <FeaturesSection />
+              
               
 
 

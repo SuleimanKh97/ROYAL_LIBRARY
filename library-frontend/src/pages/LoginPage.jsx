@@ -138,7 +138,7 @@ export default function LoginPage({ onLoginSuccess }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 flex items-center justify-center px-4 py-12" dir="rtl">
+    <div className="min-h-screen relative flex items-center justify-center px-4 py-12" style={{ background: 'linear-gradient(135deg, #1c1403 0%, #f1b227 100%)', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }} dir="rtl">
       <div className="w-full max-w-lg">
         {/* Logo and Welcome */}
         <div className="text-center mb-8">

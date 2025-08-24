@@ -8,6 +8,14 @@
   --royal-dark-beige: #fde68a;
 }
 
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1c1403 0%, #f1b227 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 /* Royal Library Custom Classes */
 .royal-gradient {
   background: linear-gradient(135deg, var(--royal-black), #374151);

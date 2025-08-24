@@ -40,12 +40,12 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
   };
 
   return (
-    <header className="bg-royal-black text-white shadow-lg relative z-50 border-b border-royal-gold/20">
+    <header className="bg-royal-black text-white shadow-md relative z-50 border-b border-royal-gold/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-18">
           {/* Logo */}
                      <Link to="/" className="flex items-center group">
-             <div className="w-16 h-16 bg-royal-gold rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+             <div className="w-16 h-16 bg-[#EDB413] rounded-xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300 overflow-hidden">
                <img 
                  src="/royal-study-logo.png" 
                  alt="ROYAL STUDY Logo" 
@@ -69,7 +69,7 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
                   to={item.href}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-bold transition-all duration-300 ${
                     isActive(item.href)
-                      ? 'bg-royal-gold text-royal-black shadow-sm hover:shadow-md hover-scale hover-glow'
+                      ? 'bg-[#EDB413] text-royal-black shadow-sm hover:shadow-md hover-scale hover-glow'
                       : 'text-white hover:text-royal-gold hover:bg-white/10 hover-scale hover-glow'
                   }`}
                 >
@@ -84,7 +84,7 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
            <div className="hidden lg:flex items-center gap-6">
             {/* WhatsApp Button */}
             <Button 
-              className="bg-royal-gold hover:bg-yellow-500 text-royal-black font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
+              className="bg-[#EDB413] hover:bg-yellow-500 text-royal-black font-bold shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300 rounded-lg px-6 py-2 text-sm"
               onClick={() => window.open('https://wa.me/962785462983', '_blank')}
             >
               تواصل معنا
@@ -96,7 +96,7 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
                 {/* User Profile Button */}
                 <div className="flex items-center space-x-4 space-x-reverse">
                   <div className="flex items-center space-x-2 bg-white/10 rounded-lg px-4 py-2">
-                    <User className="w-4 h-4 text-royal-gold" />
+                    <User className="w-4 h-4 text-[#EDB413]" />
                     <span className="text-sm font-medium text-white">
                       {currentUser.firstName} {currentUser.lastName || ''}
                     </span>
@@ -175,7 +175,7 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
                     to={item.href}
                     className={`flex items-center space-x-6 px-4 py-4 rounded-xl text-sm font-bold transition-all duration-300 min-w-[140px] justify-center ${
                       isActive(item.href)
-                        ? 'bg-royal-gold text-royal-black shadow-sm hover:shadow-md hover-scale hover-glow'
+                        ? 'bg-[#EDB413] text-royal-black shadow-sm hover:shadow-md hover-scale hover-glow'
                         : 'text-white hover:text-royal-gold hover:bg-white/10 hover-scale hover-glow'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
@@ -189,7 +189,7 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
                              {/* Mobile Action Buttons */}
               <div className="pt-6 border-t border-royal-gold/20 space-y-5">
                 <Button 
-                  className="w-full bg-royal-gold hover:bg-yellow-500 text-royal-black font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
+                  className="w-full bg-[#EDB413] hover:bg-yellow-500 text-royal-black font-bold rounded-xl shadow-sm hover:shadow-md hover-scale hover-glow transition-all duration-300"
                   onClick={() => {
                     window.open('https://wa.me/962785462983', '_blank');
                     setIsMenuOpen(false);
@@ -202,7 +202,7 @@ const Header = ({ currentUser, onLogout, onOpenAdmin }) => {
                   <>
                     {/* User Profile */}
                     <div className="flex items-center justify-center space-x-2 bg-white/10 rounded-xl px-4 py-3">
-                      <User className="w-5 h-5 text-royal-gold" />
+                      <User className="w-5 h-5 text-[#EDB413]" />
                       <span className="text-sm font-medium text-white">
                         {currentUser.firstName} {currentUser.lastName || ''}
                       </span>

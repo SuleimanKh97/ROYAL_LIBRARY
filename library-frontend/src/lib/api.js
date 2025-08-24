@@ -139,18 +139,17 @@ async function apiCall(endpoint, options = {}) {
             }
 
             const contentType = response.headers.get('content-type');
-            if (contentType && contentType.includes('application/json')) {
-                const data = await response.json();
+            const text = await response.text(); // Read body as text once
+            console.log(`Attempt ${attempt} - Raw response text:`, text.substring(0, 500)); // Log first 500 chars
+
+            try {
+                const data = JSON.parse(text);
                 console.log(`Attempt ${attempt} - API call successful, JSON result:`, data);
                 return convertKeysToCamelCase(data);
-            } else {
-                const text = await response.text();
-                console.log(`Attempt ${attempt} - API call successful, text result:`, text);
-                
-                // If we get HTML, it's likely ngrok warning page
+            } catch (jsonError) {
+                // If JSON parsing fails, check for tunnel warning pages
                 if (text.includes('<!DOCTYPE html>') || text.includes('ngrok') || text.includes('localtunnel')) {
                     console.log(`Attempt ${attempt} - tunnel warning page detected`);
-                    
                     if (attempt < maxRetries) {
                         console.log(`Waiting 2 seconds before retry ${attempt + 1}...`);
                         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -158,9 +157,10 @@ async function apiCall(endpoint, options = {}) {
                     } else {
                         throw new Error('tunnel warning page detected after all retries - please visit the API directly first');
                     }
+                } else {
+                    // If not a tunnel warning, and not JSON, it's an unexpected response
+                    throw new Error('Expected JSON response but got non-JSON: ' + text.substring(0, 200));
                 }
-                
-                throw new Error('Expected JSON response but got: ' + text.substring(0, 200));
             }
         } catch (error) {
             console.log(`Attempt ${attempt} - API call error:`, error);

@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="relative overflow-hidden">
       {/* Hero Background */}
-      <div className="bg-gradient-to-br from-[#EBB026] via-[#F4C430] to-[#FFD700] py-20 lg:py-32 relative">
+      <div className="py-20 lg:py-32 relative" style={{ background: 'linear-gradient(135deg, #1c1403 0%, #f1b227 100%)', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
         <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -27,22 +27,22 @@ const Hero = () => {
               </div>
             </div>
             
-            <h1 className="text-4xl lg:text-6xl font-black text-royal-black mb-6 tracking-tight">
-              <span className="text-royal-black font-black">المكتبة الملكية</span>
+            <h1 className="text-4xl lg:text-6xl font-black text-white mb-6 tracking-tight">
+              <span className="text-[#EDB413] font-black">المكتبة الملكية</span>
               <br />
-              <span className="text-2xl lg:text-4xl font-bold text-royal-black/80">Royal Study</span>
+              <span className="text-2xl lg:text-4xl font-bold text-white/90">Royal Study</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-royal-black/90 mb-8 font-medium leading-relaxed">
+            <p className="text-xl lg:text-2xl text-white/90 mb-8 font-medium leading-relaxed">
               وجهتك الأولى للتفوق الأكاديمي - دوسيات، كتب، قرطاسية وكورسات تعليمية
             </p>
-            <p className="text-lg text-royal-black/80 mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
               متخصصون في خدمة طلاب التوجيهي الأردني بأفضل المواد التعليمية والدعم الأكاديمي
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
                 size="lg"
-                className="bg-royal-black hover:bg-royal-black/90 text-white font-bold px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl hover-scale hover-glow transition-all duration-300"
+                className="bg-[#EDB413] hover:bg-[#EDB413]/90 text-black font-bold px-8 py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl hover-scale hover-glow transition-all duration-300"
                 onClick={() => window.open('https://wa.me/962785462983?text=مرحباً، أرغب في الاستفسار عن خدماتكم', '_blank')}
               >
                 ابدأ رحلتك التعليمية
@@ -51,7 +51,7 @@ const Hero = () => {
                 <Button 
                   size="lg"
                   variant="outline"
-                  className="border-2 border-royal-black text-royal-black hover:bg-royal-black hover:text-white font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
+                  className="border-2 border-[#EDB413] text-[#EDB413] hover:bg-[#EDB413] hover:text-black hover:border-[#EDB413] font-bold px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl hover-scale hover-glow transition-all duration-300"
                 >
                   تصفح المنتجات
                 </Button>
@@ -62,48 +62,48 @@ const Hero = () => {
       </div>
 
       {/* Quick Services Preview */}
-      <div className="bg-gradient-to-br from-royal-beige to-royal-dark-beige py-20">
+      <div className="py-20" style={{ background: 'linear-gradient(135deg, #1c1403 0%, #f1b227 100%)', backgroundRepeat: 'no-repeat', backgroundAttachment: 'fixed' }}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black text-royal-black mb-6 tracking-tight">
+            <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
               خدماتنا الأساسية
             </h2>
-            <p className="text-xl text-royal-black/80 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed font-medium">
               كل ما تحتاجه للتفوق الأكاديمي في مكان واحد
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Link to="/books" className="group relative">
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10">
-                  <Book className="w-8 h-8 text-white" />
+              <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border border-[#EDB413]/30">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#EDB413]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="w-16 h-16 bg-[#EDB413] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10">
+                  <Book className="w-8 h-8 text-black" />
                 </div>
-                <h3 className="text-xl font-bold text-royal-black mb-3 relative z-10">سوق الطلاب</h3>
-                <p className="text-royal-black/70 leading-relaxed relative z-10">كتب ودوسيات وقرطاسية</p>
+                <h3 className="text-xl font-bold text-white mb-3 relative z-10">سوق الطلاب</h3>
+                <p className="text-white/70 leading-relaxed relative z-10">كتب ودوسيات وقرطاسية</p>
               </div>
             </Link>
             
             <Link to="/quizzes" className="group relative">
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10">
-                  <Circle className="w-8 h-8 text-white" />
+              <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border border-[#EDB413]/30">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#EDB413]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="w-16 h-16 bg-[#EDB413] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10">
+                  <Circle className="w-8 h-8 text-black" />
                 </div>
-                <h3 className="text-xl font-bold text-royal-black mb-3 relative z-10">كويزاتك التفاعلية</h3>
-                <p className="text-royal-black/70 leading-relaxed relative z-10">اختبر معلوماتك في جميع المواد</p>
+                <h3 className="text-xl font-bold text-white mb-3 relative z-10">كويزاتك التفاعلية</h3>
+                <p className="text-white/70 leading-relaxed relative z-10">اختبر معلوماتك في جميع المواد</p>
               </div>
             </Link>
             
             <Link to="/calendar" className="group relative">
-              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10">
-                  <Calendar className="w-8 h-8 text-white" />
+              <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 relative overflow-hidden border border-[#EDB413]/30">
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#EDB413]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="w-16 h-16 bg-[#EDB413] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg relative z-10">
+                  <Calendar className="w-8 h-8 text-black" />
                 </div>
-                <h3 className="text-xl font-bold text-royal-black mb-3 relative z-10">الرزنامة الطلابية</h3>
-                <p className="text-royal-black/70 leading-relaxed relative z-10">جداول ومواعيد مهمة</p>
+                <h3 className="text-xl font-bold text-white mb-3 relative z-10">الرزنامة الطلابية</h3>
+                <p className="text-white/70 leading-relaxed relative z-10">جداول ومواعيد مهمة</p>
               </div>
             </Link>
           </div>

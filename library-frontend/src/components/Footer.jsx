@@ -59,15 +59,15 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold text-royal-gold mb-4">تواصل معنا</h4>
             <div className="space-y-3">
-              <div className="text-royal-beige/80">
+              <a href="tel:+962785462983" className="text-royal-beige/80 hover:text-royal-gold hover:underline transition-colors block">
                 📞 <span className="ltr inline-block">0785462983</span>
-              </div>
-              <div className="text-royal-beige/80">
+              </a>
+              <a href="mailto:info@royalstudy.jo" className="text-royal-beige/80 hover:text-royal-gold hover:underline transition-colors block">
                 📧 info@royalstudy.jo
-              </div>
+              </a>
               <button
                 onClick={() => window.open('https://wa.me/962785462983?text=مرحباً، أرغب في الاستفسار عن خدماتكم', '_blank')}
-                className="bg-royal-gold hover:bg-royal-gold/90 text-royal-black px-4 py-2 rounded-lg font-medium transition-colors inline-block mt-2"
+                className="bg-[#EDB413] hover:bg-[#EDB413]/90 text-black px-4 py-2 rounded-lg font-medium transition-colors inline-block mt-2"
               >
                 تواصل معنا
               </button>
@@ -78,7 +78,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-royal-gold/20 mt-8 pt-8 text-center">
           <p className="text-royal-beige/60">
-            © 2024 Royal Study. جميع الحقوق محفوظة.
+            © 2025 Royal Study. جميع الحقوق محفوظة.
           </p>
         </div>
       </div>
